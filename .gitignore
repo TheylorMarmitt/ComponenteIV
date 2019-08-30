@@ -32,7 +32,7 @@ target/
 
 config/
 
-src/main/resources/application.properties
+crud/src/main/resources/application.properties
 
 *.properties
 application.properties
