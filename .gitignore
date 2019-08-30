@@ -6,8 +6,6 @@
 # Compiled class file
 *.class
 
-application.properties
-
 pom.xml.tag
 
 pom.xml.releaseBackup
@@ -35,7 +33,7 @@ config/
 crud/src/main/resources/application.properties
 src/main/resources/application.properties
 
-
+.properties
 *.properties
 application.properties
 
