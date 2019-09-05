@@ -1,4 +1,4 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc.crud.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
