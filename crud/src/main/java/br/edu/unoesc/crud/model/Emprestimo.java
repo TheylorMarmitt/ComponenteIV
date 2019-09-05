@@ -1,13 +1,11 @@
 package br.edu.unoesc.crud.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Table(name = "Emprestimo")
 public class Emprestimo {
 
     @Id
@@ -18,9 +16,13 @@ public class Emprestimo {
     private Date data;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "exemplar_id")
     private Exemplar exemplar;
 
     @NotNull

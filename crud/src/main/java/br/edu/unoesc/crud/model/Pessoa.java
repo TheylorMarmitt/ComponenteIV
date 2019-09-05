@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Table(name = "Pessoa")
 public class Pessoa {
 
     @Id
