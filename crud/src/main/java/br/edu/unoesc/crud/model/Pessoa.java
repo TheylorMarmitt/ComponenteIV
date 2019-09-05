@@ -20,6 +20,9 @@ public class Pessoa {
     @NotNull
     private Date dataNascimento;
 
+    @NotNull
+    private String email;
+
     @NotNull(message="CPF obrigatório")
     @Size(min = 11, max = 11, message = "CPF inválido")
     private String cpf;
@@ -61,6 +64,22 @@ public class Pessoa {
     }
 
     public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Pessoa(String nome, String sobrenome, Date dataNascimento, String email, String cpf) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
         this.cpf = cpf;
     }
 }
