@@ -37,14 +37,20 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script th:src="@{/js/paper-dashboard.min.js?v=2.0.0}" type="text/javascript"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script src="https:/maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script th:src="@{/demo/demo.js}"></script>
     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
             demo.initChartsPages();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".selecionado").click(function() {
+                $(this).addClass("active");
+            });
         });
     </script>
 </div>
