@@ -3,6 +3,9 @@ package br.edu.unoesc.crud.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 @Entity
@@ -18,6 +21,7 @@ public class Pessoa {
     @NotNull
     private String sobrenome;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
 
     @NotNull
