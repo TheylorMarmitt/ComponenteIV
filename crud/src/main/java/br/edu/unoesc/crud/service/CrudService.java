@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CrudService <T> {
 
-	T salvar(T dado);
+	void salvar(T dado);
 	
-	T excluir (T dado);
+	void excluir (T dado);
 	
 	List<T> listar();
 }
