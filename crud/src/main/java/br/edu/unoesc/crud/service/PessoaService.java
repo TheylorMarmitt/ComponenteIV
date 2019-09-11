@@ -15,20 +15,18 @@ public class PessoaService implements CrudService<Pessoa> {
 	private PessoaRepository repository;
 	
 	@Override
-	public Pessoa salvar(Pessoa dado) {
+	public void salvar(Pessoa dado) {
 			repository.save(dado);
 	}
 
 	@Override
-	public Pessoa excluir(Pessoa dado) {
-		// TODO Auto-generated method stub
-		return null;
+	public void excluir(Pessoa dado) {
+		repository.delete(dado);
 	}
 
 	@Override
 	public List<Pessoa> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 	
 	
