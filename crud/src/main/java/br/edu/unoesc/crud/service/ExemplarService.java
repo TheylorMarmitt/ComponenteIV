@@ -14,21 +14,18 @@ public class ExemplarService implements CrudService<Exemplar> {
     ExemplarRepository repository;
 
     @Override
-    public Exemplar salvar(Exemplar dado) {
+    public void salvar(Exemplar dado) {
         this.repository.save(dado);
-        return null;
     }
 
     @Override
-    public Exemplar excluir(Exemplar dado) {
+    public void excluir(Exemplar dado) {
         this.repository.delete(dado);
-        return null;
     }
 
     @Override
     public List<Exemplar> listar() {
-
-        return null;
+        return this.repository.findAll();
     }
 
 

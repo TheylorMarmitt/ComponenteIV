@@ -38,6 +38,10 @@ public class Exemplar {
         return false;
     }
 
+    public Exemplar(){
+
+    }
+
     public Exemplar(Long codigo, String titulo, String autor, String genero, String editora,
                     Integer anoPublicacao,  Integer quantidadeTotal) {
         this.codigo = codigo;
