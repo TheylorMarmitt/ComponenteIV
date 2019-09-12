@@ -51,7 +51,46 @@
 
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>desenvolvimento</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+<!--			<properties>-->
+<!--				<spring.active.profile>desenvolvimento</spring.active.profile>-->
+<!--			</properties>-->
+
+			<build>
+				<filters>
+					<filter>${user.home}/biblioteca.properties</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
+
 	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/**</exclude>
+					<exclude>*.html</exclude>
+				</excludes>
+			</resource>
+
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/**</include>
+					<include>*.html</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
