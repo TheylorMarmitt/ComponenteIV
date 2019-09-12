@@ -30,21 +30,13 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="title">Emprestar</h5>
+                            <h5 class="title">Devolução</h5>
                         </div>
-                        <form action="/emprestimo/cadastroEnviar" method="post">
+                        <form action="/devolucao/enviar", method="post">
                             <div class="container-fluid">
                                 <div class="form-group">
-                                    <label>Código cliente:</label>
-                                    <input type="number" name="pessoa" class="form-control">
-                                </div>
-                            </div>
-                            <div class="container-fluid">
-                                <div class="form-group">
-                                    <label>Exemplar:</label>
-                                    <select class="form-control" name="exemplar" id="exemplar">
-                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text="${objeto.titulo}"></option>
-                                    </select>
+                                    <label>Emprestimo:</label>
+                                    <input type="number" name="emprestimo" class="form-control">
                                 </div>
                             </div>
                             <div class="container-fluid">
@@ -59,22 +51,21 @@
                                     <input type="number" name="quantidade" class="form-control">
                                 </div>
                             </div>
-<!--                            <div class="container-fluid">-->
-<!--                                <div class="form-group">-->
-<!--                                    <label>Ativo: <input type="checkbox" name="ativo"> </label>-->
-<!--                                </div>-->
-<!--                            </div>-->
                             <div class="col-xs-12 col-md-2">
                                 <div class="form-group">
                                     <input name="Enviar" type="submit" class="form-control">
                                 </div>
-                            </div>
+                            </div>s
                         </form>
                     </div>
 
                 </div>
             </div>
         </div>
+
+
+
+
 
         <!--      rodape-->
         <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>

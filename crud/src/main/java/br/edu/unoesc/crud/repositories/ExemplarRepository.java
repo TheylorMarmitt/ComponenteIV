@@ -9,4 +9,6 @@ public interface ExemplarRepository extends JpaRepository<Exemplar, Long> {
 
     Exemplar findByTitulo(String titulo);
 
+    Exemplar findByCodigo(long codigo);
+
 }

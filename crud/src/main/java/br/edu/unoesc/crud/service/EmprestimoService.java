@@ -7,7 +7,9 @@ import br.edu.unoesc.crud.repositories.ExemplarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmprestimoService implements CrudService<Emprestimo> {
@@ -19,13 +21,29 @@ public class EmprestimoService implements CrudService<Emprestimo> {
     ExemplarRepository exemplarRepository;
 
     @Override
-    public void salvar(Emprestimo dado) {
+    public boolean salvar(Emprestimo dado){
+
+        Exemplar exemplar = exemplarRepository.findByCodigo(dado.getExemplar().getCodigo());
+
+        if(exemplar.getQuantidadeTotal() >= dado.getQuantidade()){
+            exemplar.removerQuantidade(dado.getQuantidade());
+            dado.setAtivo(true);
+        }else if(exemplar.getQuantidadeTotal() == dado.getQuantidade()){
+            exemplar.removerQuantidade(dado.getQuantidade());
+            dado.setAtivo(true);
+        }else if(exemplar.getQuantidadeTotal() <= dado.getQuantidade()){
+            return false;
+        }
+
+        this.exemplarRepository.saveAndFlush(dado.getExemplar());
         this.repository.save(dado);
+        return true;
     }
 
     @Override
-    public void excluir(Emprestimo dado) {
+    public boolean excluir(Emprestimo dado) {
         this.repository.delete(dado);
+        return true;
     }
 
     @Override
