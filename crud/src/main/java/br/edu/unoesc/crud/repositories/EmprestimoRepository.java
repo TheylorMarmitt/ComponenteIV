@@ -12,4 +12,6 @@ public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
 
     List<Emprestimo> findByAtivoTrueAndPessoaCodigo(long codigo);
 
+    Emprestimo findByCodigo(long codigo);
+
 }

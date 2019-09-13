@@ -28,10 +28,8 @@ public class EmprestimoService implements CrudService<Emprestimo> {
         if(exemplar.getQuantidadeTotal() >= dado.getQuantidade()){
             exemplar.removerQuantidade(dado.getQuantidade());
             dado.setAtivo(true);
-        }else if(exemplar.getQuantidadeTotal() == dado.getQuantidade()){
-            exemplar.removerQuantidade(dado.getQuantidade());
-            dado.setAtivo(true);
-        }else if(exemplar.getQuantidadeTotal() <= dado.getQuantidade()){
+
+        }else if(exemplar.getQuantidadeTotal() < dado.getQuantidade()){
             return false;
         }
 

@@ -86,4 +86,8 @@ public class Pessoa {
         this.email = email;
         this.cpf = cpf;
     }
+
+    public Pessoa(){
+
+    }
 }

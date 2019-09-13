@@ -1,5 +1,7 @@
 package br.edu.unoesc.crud.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -13,17 +15,18 @@ public class Emprestimo {
     private Long codigo;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoa;
+    private Pessoa pessoa = new Pessoa();
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "exemplar_id")
-    private Exemplar exemplar;
+    private Exemplar exemplar = new Exemplar();
 
     @NotNull
     private Boolean ativo;
