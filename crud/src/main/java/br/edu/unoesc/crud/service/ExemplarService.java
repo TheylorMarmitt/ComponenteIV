@@ -30,6 +30,14 @@ public class ExemplarService implements CrudService<Exemplar> {
         return this.repository.findAll();
     }
 
+    public Integer quantidade(){
+        Integer qtd = 0;
+        List<Exemplar> exemplares = this.repository.findAll();
+        for (Exemplar e: exemplares) {
+            qtd += e.getQuantidadeTotal();
+        }
+        return qtd;
+    }
 
 
 

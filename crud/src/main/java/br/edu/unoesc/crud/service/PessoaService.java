@@ -31,7 +31,9 @@ public class PessoaService implements CrudService<Pessoa> {
 		return repository.findAll();
 	}
 
-
+	public Integer quantidade(){
+		return this.repository.findAll().size();
+	}
 
 
 }

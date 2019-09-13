@@ -1,5 +1,7 @@
 package br.edu.unoesc.crud.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -13,6 +15,7 @@ public class Devolucao {
     private Long codigo;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
     @NotNull

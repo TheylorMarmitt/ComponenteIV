@@ -53,7 +53,17 @@ public class EmprestimoService implements CrudService<Emprestimo> {
         return this.exemplarRepository.findAll();
     }
 
+    public Integer quantidade() {
+        return this.repository.findAll().size();
+    }
 
+    public Integer quantidadeEmprestadosAtivos() {
+        List<Emprestimo> emprestimos =  this.repository.findAllByAtivoTrue();
+        Integer quantidade = 0;
 
-
+        for (Emprestimo e: emprestimos) {
+            quantidade = quantidade + e.getQuantidade();
+        }
+        return quantidade;
+    }
 }
