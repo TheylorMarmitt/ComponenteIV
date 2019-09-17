@@ -60,11 +60,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="objeto : ${lista}">
-                                        <td th:each="campo: ${objeto}" th:text="${campo.valor}"></td>
+                                    <tr th:each="pessoa : ${lista}">
+                                        <td th:text="${pessoa.codigo}"></td>
+                                        <td th:text="${pessoa.nome}"></td>
+                                        <td th:text="${pessoa.sobrenome}"></td>
+                                        <td th:text="${pessoa.cpf}"></td>
+                                        <td th:text="${pessoa.email}"></td>
                                     	<td>
-                                    		<a class="btn btn-outline-primary"><i class="fa fa-pen"></i></a>
-                                    		<a class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-excluir"><i class="fa fa-trash"></i></a>
+                                    		<a class="btn btn-outline-primary"><i class="fa fa-pen" th:attr="data-codigo=${pessoa.codigo}"></i></a>
+                                    		<a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" th:attr="data-codigo=${pessoa.codigo}"><i class="fa fa-trash"></i></a>
                                     	</td>
                                     </tr>
                                 </tbody>
@@ -78,13 +82,13 @@
 		<div data-th-replace="fragments/fragmento_modal_excluir :: modal-excluir"></div>
         <!--      rodape-->
         <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
-
+		
     </div>
 </div>
 
-
-<div data-th-replace="fragments/imports :: scripts" ></div>
+ <div data-th-replace="fragments/imports :: scripts" ></div>
  <script th:src="@{/js/pessoa.js}"></script>
+
 </body>
 
 </html>

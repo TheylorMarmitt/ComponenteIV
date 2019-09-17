@@ -42,7 +42,10 @@ public class Pessoa {
     public Pessoa() {
     	
     }
- 
+    public Pessoa(Long codigo) {
+    	
+    }
+    
     public Long getCodigo() {
         return codigo;
     }
