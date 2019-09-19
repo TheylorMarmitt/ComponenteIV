@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CrudService <T> {
 
-	boolean salvar(T dado);
+	boolean salvar(T dado) throws Exception;
 
 	boolean excluir (T dado);
 	

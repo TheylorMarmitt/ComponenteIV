@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,19 +22,13 @@ public class EmprestimoService implements CrudService<Emprestimo> {
     ExemplarRepository exemplarRepository;
 
     @Override
-    public boolean salvar(Emprestimo dado){
+    @Transactional
+    public boolean salvar(Emprestimo dado) throws Exception {
 
-        Exemplar exemplar = exemplarRepository.findByCodigo(dado.getExemplar().getCodigo());
+        dado.setExemplar(exemplarRepository.findByCodigo(dado.getExemplar().getCodigo()));
 
-        if(exemplar.getQuantidadeTotal() >= dado.getQuantidade()){
-            exemplar.removerQuantidade(dado.getQuantidade());
-            dado.setAtivo(true);
+        dado = ajusteQtd(dado);
 
-        }else if(exemplar.getQuantidadeTotal() < dado.getQuantidade()){
-            return false;
-        }
-
-        this.exemplarRepository.saveAndFlush(dado.getExemplar());
         this.repository.save(dado);
         return true;
     }
@@ -65,5 +60,18 @@ public class EmprestimoService implements CrudService<Emprestimo> {
             quantidade = quantidade + e.getQuantidade();
         }
         return quantidade;
+    }
+
+    private Emprestimo ajusteQtd(Emprestimo dado) throws Exception {
+
+        if(dado.getExemplar().getQuantidadeTotal() >= dado.getQuantidade()){
+            dado.getExemplar().removerQuantidade(dado.getQuantidade());
+            dado.setAtivo(true);
+
+        }else{
+            throw new Exception("Exemplar não pode ser nulo");
+        }
+        this.exemplarRepository.saveAndFlush(dado.getExemplar());
+        return dado;
     }
 }

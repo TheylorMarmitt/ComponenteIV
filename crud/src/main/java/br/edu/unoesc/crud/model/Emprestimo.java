@@ -19,7 +19,7 @@ public class Emprestimo {
     private Date data;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa = new Pessoa();
 

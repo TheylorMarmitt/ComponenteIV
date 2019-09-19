@@ -23,7 +23,11 @@ public class EmprestimoController {
 
     @PostMapping("/emprestimo/cadastroEnviar")
     public String enviar(Emprestimo emprestimo) {
-        service.salvar(emprestimo);
+        try {
+            service.salvar(emprestimo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "index";
     }
 
