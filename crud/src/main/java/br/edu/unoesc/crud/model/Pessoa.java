@@ -39,9 +39,6 @@ public class Pessoa {
     @Size(min = 11, max = 11, message = "CPF inválido")
     private String cpf;
 
-    public Pessoa() {
-    	
-    }
     public Pessoa(Long codigo) {
     	
     }
@@ -101,5 +98,9 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
         this.email = email;
         this.cpf = cpf;
+    }
+
+    public Pessoa(){
+
     }
 }

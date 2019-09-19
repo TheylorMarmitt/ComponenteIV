@@ -1,6 +1,7 @@
 package br.edu.unoesc.crud.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,15 @@ public class PessoaService implements CrudService<Pessoa> {
 	private PessoaRepository repository;
 	
 	@Override
-	public void salvar(Pessoa dado) {
-			repository.save(dado);
+	public boolean salvar(Pessoa dado) {
+		repository.save(dado);
+		return true;
 	}
 
 	@Override
-	public void excluir(Pessoa dado) {
+	public boolean excluir(Pessoa dado) {
 		repository.delete(dado);
+		return true;
 	}
 
 	@Override
@@ -29,7 +32,13 @@ public class PessoaService implements CrudService<Pessoa> {
 		return repository.findAll();
 	}
 
-
+	public Integer quantidade(){
+		return this.repository.findAll().size();
+	}
+	
+	public Optional<Pessoa> getByCodigo(Long codigo) {
+		return repository.findById(codigo);
+	}
 
 
 }

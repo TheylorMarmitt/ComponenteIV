@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import br.edu.unoesc.crud.model.Pessoa;
 import br.edu.unoesc.crud.service.PessoaService;
 
@@ -21,14 +24,19 @@ public class PessoaController {
 	@Autowired
 	private PessoaService service;
 
-	@GetMapping("/pessoa/cadastro")
-	public String cadastro() {
+	@GetMapping({ "/pessoa/cadastro", "/pessoa/cadastro/{codigo}" })
+	public String cadastro(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
+		
+		if (codigo != null) {
+			model.addAttribute("pessoa", service.getByCodigo(codigo).get());
+		}
+		
 		return "pessoa/cadastro";
 	}
 
 	@PostMapping("/pessoa/cadastro")
 	public String cadastro(Model model, @Valid Pessoa pessoa, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("pessoa", pessoa);
 			return "pessoa/cadastro";
 		}
@@ -42,10 +50,10 @@ public class PessoaController {
 		model.addAttribute("lista", pessoas);
 		return "pessoa/lista";
 	}
-	
+
 	@PostMapping("/pessoa/excluir")
 	public ResponseEntity<String> excluir(Pessoa pessoa) {
-		service.excluir(pessoa);	
+		service.excluir(pessoa);
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 

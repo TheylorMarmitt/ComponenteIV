@@ -1,11 +1,13 @@
 package br.edu.unoesc.crud.controller;
 
+import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.service.EmprestimoService;
 import br.edu.unoesc.crud.service.ExemplarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EmprestimoController {
@@ -19,9 +21,16 @@ public class EmprestimoController {
         return "emprestimo/cadastro";
     }
 
-    @GetMapping("/emprestimo/devolucao")
-    public String devolver() {
-        return "emprestimo/devolucao";
+    @PostMapping("/emprestimo/cadastroEnviar")
+    public String enviar(Emprestimo emprestimo) {
+        service.salvar(emprestimo);
+        return "index";
+    }
+    
+    @GetMapping("/emprestimo/lista")
+    public String listar(Model model) {
+    	model.addAttribute("lista", service.listar());
+    	return "listas/emprestados";
     }
     
 }

@@ -67,7 +67,7 @@
                                         <td th:text="${pessoa.cpf}"></td>
                                         <td th:text="${pessoa.email}"></td>
                                     	<td>
-                                    		<a class="btn btn-outline-primary"><i class="fa fa-pen" th:attr="data-codigo=${pessoa.codigo}"></i></a>
+                                    		<a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${pessoa.codigo})}"><i class="fa fa-pen"></i></a>
                                     		<a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" th:attr="data-codigo=${pessoa.codigo}"><i class="fa fa-trash"></i></a>
                                     	</td>
                                     </tr>
