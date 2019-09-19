@@ -30,6 +30,11 @@ public class EmprestimoController {
         }
         return "index";
     }
-
-
+    
+    @GetMapping("/emprestimo/lista")
+    public String listar(Model model) {
+    	model.addAttribute("lista", service.listar());
+    	return "listas/emprestados";
+    }
+    
 }

@@ -55,11 +55,21 @@
                                         <th scope="col">Nome</th>
                                         <th scope="col">Sobrenome</th>
                                         <th scope="col">CPF</th>
+                                        <th scope="col">E-mail</th>
+                                        <th scope="col">Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="objeto : ${lista}">
-                                        <td th:each="campo: ${objeto}" th:text="${campo.valor}"></td>
+                                    <tr th:each="pessoa : ${lista}">
+                                        <td th:text="${pessoa.codigo}"></td>
+                                        <td th:text="${pessoa.nome}"></td>
+                                        <td th:text="${pessoa.sobrenome}"></td>
+                                        <td th:text="${pessoa.cpf}"></td>
+                                        <td th:text="${pessoa.email}"></td>
+                                    	<td>
+                                    		<a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${pessoa.codigo})}"><i class="fa fa-pen"></i></a>
+                                    		<a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" th:attr="data-codigo=${pessoa.codigo}"><i class="fa fa-trash"></i></a>
+                                    	</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -69,15 +79,16 @@
                 </div>
             </div>
         </div>
-
+		<div data-th-replace="fragments/fragmento_modal_excluir :: modal-excluir"></div>
         <!--      rodape-->
         <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
-
+		
     </div>
 </div>
 
+ <div data-th-replace="fragments/imports :: scripts" ></div>
+ <script th:src="@{/js/pessoa.js}"></script>
 
-<div data-th-replace="fragments/imports :: scripts" ></div>
 </body>
 
 </html>

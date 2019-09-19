@@ -1,6 +1,7 @@
 package br.edu.unoesc.crud.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,10 @@ public class PessoaService implements CrudService<Pessoa> {
 
 	public Integer quantidade(){
 		return this.repository.findAll().size();
+	}
+	
+	public Optional<Pessoa> getByCodigo(Long codigo) {
+		return repository.findById(codigo);
 	}
 
 

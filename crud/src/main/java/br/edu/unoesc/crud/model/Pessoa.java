@@ -6,6 +6,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.edu.unoesc.crud.reflection.CampoTela;
+
 import java.util.Date;
 
 @Entity
@@ -13,24 +15,34 @@ import java.util.Date;
 public class Pessoa {
 
     @Id
+    @CampoTela
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
     @NotNull
+    @CampoTela
     private String nome;
     @NotNull
+    @CampoTela
     private String sobrenome;
+    
     @NotNull
+    @CampoTela
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
 
     @NotNull
+    @CampoTela
     private String email;
 
     @NotNull(message="CPF obrigatório")
     @Size(min = 11, max = 11, message = "CPF inválido")
     private String cpf;
 
+    public Pessoa(Long codigo) {
+    	
+    }
+    
     public Long getCodigo() {
         return codigo;
     }
@@ -47,7 +59,8 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getSobrenome() {
+
+	public String getSobrenome() {
         return sobrenome;
     }
 
