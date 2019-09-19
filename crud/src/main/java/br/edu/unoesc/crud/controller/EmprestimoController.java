@@ -23,9 +23,18 @@ public class EmprestimoController {
 
     @PostMapping("/emprestimo/cadastroEnviar")
     public String enviar(Emprestimo emprestimo) {
-        service.salvar(emprestimo);
+        try {
+            service.salvar(emprestimo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "index";
     }
-
-
+    
+    @GetMapping("/emprestimo/lista")
+    public String listar(Model model) {
+    	model.addAttribute("lista", service.listar());
+    	return "listas/emprestados";
+    }
+    
 }

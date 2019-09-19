@@ -9,6 +9,7 @@ import br.edu.unoesc.crud.repositories.ExemplarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -24,21 +25,14 @@ public class DevolucaoService implements CrudService<Devolucao>{
     EmprestimoRepository emprestimoRepository;
 
     @Override
-    public boolean salvar(Devolucao dado) {
+    @Transactional
+    public boolean salvar(Devolucao dado) throws Exception {
 
-        Emprestimo emprestimo = emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo());
-        Exemplar exemplar = exemplarRepository.findByCodigo(emprestimo.getExemplar().getCodigo());
+        dado.setEmprestimo(emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo()));
+        dado.getEmprestimo().setExemplar(exemplarRepository.findByCodigo(dado.getEmprestimo().getExemplar().getCodigo()));
 
-        emprestimo.setQuantidade(emprestimo.getQuantidade() - dado.getQuantidade());
+        dado = ajustes(dado);
 
-        if(emprestimo.getQuantidade() == 0){
-            emprestimo.setAtivo(false);
-            return true;
-        }
-        exemplar.addQuantidade(dado.getQuantidade());
-
-        this.emprestimoRepository.saveAndFlush(emprestimo);
-        this.exemplarRepository.saveAndFlush(exemplar);
         this.repository.save(dado);
         return true;
     }
@@ -52,4 +46,22 @@ public class DevolucaoService implements CrudService<Devolucao>{
     public List<Devolucao> listar() {
         return null;
     }
+
+    private Devolucao ajustes(Devolucao d) throws Exception {
+        if(d.getQuantidade() <= d.getEmprestimo().getQuantidade()){
+            d.getEmprestimo().setQuantidade(d.getEmprestimo().getQuantidade() - d.getQuantidade());
+
+            if(d.getEmprestimo().getQuantidade() == 0){
+                d.getEmprestimo().setAtivo(false);
+            }
+            d.getEmprestimo().getExemplar().addQuantidade(d.getQuantidade());
+
+        }else{
+            throw new Exception("Quantidade de devolução maior que emprestados");
+        }
+        this.emprestimoRepository.saveAndFlush(d.getEmprestimo());
+        this.exemplarRepository.saveAndFlush(d.getEmprestimo().getExemplar());
+        return d;
+    }
+
 }
