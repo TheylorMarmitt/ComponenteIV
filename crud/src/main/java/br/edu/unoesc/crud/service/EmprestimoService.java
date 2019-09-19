@@ -24,9 +24,7 @@ public class EmprestimoService implements CrudService<Emprestimo> {
     @Override
     @Transactional
     public boolean salvar(Emprestimo dado) throws Exception {
-
         dado.setExemplar(exemplarRepository.findByCodigo(dado.getExemplar().getCodigo()));
-
         dado = ajusteQtd(dado);
 
         this.repository.save(dado);

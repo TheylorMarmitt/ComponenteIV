@@ -21,7 +21,11 @@ public class DevolucaoController {
 
     @PostMapping("/devolucao/enviar")
     public String enviar(Devolucao devolucao){
-        devolucaoService.salvar(devolucao);
+        try {
+            devolucaoService.salvar(devolucao);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "/";
     }
 }
