@@ -1,5 +1,6 @@
 package br.edu.unoesc.crud.controller;
 
+import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
 import br.edu.unoesc.crud.service.EmprestimoService;
 import br.edu.unoesc.crud.service.ExemplarService;
@@ -9,6 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -29,6 +34,11 @@ public class IndexController {
         model.addAttribute("qtdEmprestimos", emprestimoService.quantidade());
         model.addAttribute("qtdEmprestados", emprestimoService.quantidadeEmprestadosAtivos());
         return "index";
+    }
+
+    @RequestMapping(path = "/dadosGrafico")
+    public @ResponseBody List<Exemplar> dados() {
+        return exemplarService.listar();
     }
 
 }

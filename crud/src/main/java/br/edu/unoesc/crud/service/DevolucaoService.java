@@ -27,7 +27,7 @@ public class DevolucaoService implements CrudService<Devolucao>{
     public boolean salvar(Devolucao dado) {
 
         Emprestimo emprestimo = emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo());
-        Exemplar exemplar = exemplarRepository.findByCodigo(dado.getEmprestimo().getExemplar().getCodigo());
+        Exemplar exemplar = exemplarRepository.findByCodigo(emprestimo.getExemplar().getCodigo());
 
         emprestimo.setQuantidade(emprestimo.getQuantidade() - dado.getQuantidade());
 

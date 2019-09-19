@@ -162,17 +162,15 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="col-md-12">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
+                <h5 class="card-title">Exemplares por título</h5>
+                <p class="card-category">Quantidade de exemplares</p>
               </div>
               <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
+                <canvas id=grafico width="400" height="180"></canvas>
               </div>
               <div class="card-footer ">
                 <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
+<!--                -->
               </div>
             </div>
           </div>
@@ -251,6 +249,67 @@ The above copyright notice and this permission notice shall be included in all c
             demo.initChartsPages();
         });
     </script>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"> </script>
+<script type="text/javascript">
+
+  const exemplares = [];
+
+  var ctx = document.getElementById('grafico');
+  var labels = [];
+  var data = [];
+  var backgroundColor = [];
+  var borderColor = [];
+
+
+  $(document).ready(function() {
+
+    $.ajax({
+      url: 'dadosGrafico',
+      success: function(result) {
+        result.forEach(elemento => {
+          exemplares.push({titulo: elemento.titulo, quantidade: elemento.quantidadeTotal});
+        })
+
+        exemplares.forEach(element => {
+          labels.push(element.titulo);
+          data.push(element.quantidade);
+          backgroundColor.push('#00b806');
+          borderColor.push('#030202');
+        });
+
+        var myChart = new Chart(ctx, {
+          type : 'pie',
+          data : { labels,
+            datasets : [ {
+              label: 'Títulos e quatidade',
+              data,
+              backgroundColor,
+              borderColor,
+              borderWidth: 2
+            } ]
+          },
+          options : {
+            scales : {
+              yAxes : [ {
+                ticks : {
+                  beginAtZero : true
+                }
+              } ]
+            }
+          }
+        });
+
+      }
+    });
+
+
+
+  });
+
+
+</script>
 </body>
 
 </html>

@@ -68,4 +68,14 @@ public class Devolucao {
     public void setQuantidade(Integer quantidade){
         this.quantidade = quantidade;
     }
+
+    @Override
+    public String toString() {
+        return "Devolucao{" +
+                "codigo=" + codigo +
+                ", data=" + data +
+                ", emprestimo=" + emprestimo +
+                ", quantidade=" + quantidade +
+                '}';
+    }
 }
