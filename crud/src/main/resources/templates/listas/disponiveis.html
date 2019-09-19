@@ -33,12 +33,12 @@
                             <h5 class="title">Lista exemplares disponíveis</h5>
                         </div>
 
-                        <form action="buscaTitulo">
+                        <form action="/buscaExemplarTitulo">
                             <div class="container">
                                 <div class="form-group">
                                     <label>Busca por título:</label>
                                     <div class="input-group-append">
-                                        <input type="text" class="form-control" placeholder="Título do exemplar" >
+                                        <input type="text" name="titulo" class="form-control" placeholder="Título do exemplar" >
                                         <div class="input-group-append">
                                             <button class="btn btn-info m-0" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
                                         </div>
@@ -47,19 +47,28 @@
                             </div>
                         </form>
                         <div class="container">
-                            <table class="table table-striped table-hover table-responsive">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">Título</th>
                                         <th scope="col">Autor</th>
                                         <th scope="col">Ano</th>
-                                        <th scope="col">Emprestado para</th>
-                                        <th scope="col">E-mail</th>
-                                        <th scope="col">Quantidade emprestada</th>
+                                        <th scope="col">Quantidade</th>
+                                        <th scope="col">Gênero</th>
+                                        <th scope="col">Emprestar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <tr th:each="exemplar : ${lista}">
+                                    <td th:text="${exemplar.titulo}"></td>
+                                    <td th:text="${exemplar.autor}"></td>
+                                    <td th:text="${exemplar.anoPublicacao}"></td>
+                                    <td th:text="${exemplar.quantidadeTotal}"></td>
+                                    <td th:text="${exemplar.genero}"></td>
+                                    <td>
+                                        <a class="btn btn-outline-success" href="/emprestimo/cadastro" > <i class="fa fa-share-square text-success"></i></a>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

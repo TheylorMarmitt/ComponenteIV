@@ -103,4 +103,16 @@ public class Pessoa {
     public Pessoa(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
+    }
 }

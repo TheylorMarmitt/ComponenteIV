@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label>Exemplar:</label>
                                     <select class="form-control" name="exemplar" id="exemplar">
-                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text="${objeto.titulo}"></option>
+                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal} " ></option>
                                     </select>
                                 </div>
                             </div>

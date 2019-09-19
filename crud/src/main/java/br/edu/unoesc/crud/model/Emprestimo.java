@@ -32,28 +32,29 @@ public class Emprestimo {
     private Boolean ativo;
     private Integer quantidade;
 
-    // não usado, implementado em service
-    public boolean emprestar(Integer qtd){
-        this.quantidade += qtd;
-        // verifica se exemplar tem quantidade
-        if(exemplar.getQuantidadeTotal() >= this.quantidade){
-            exemplar.removerQuantidade(this.quantidade);
-            setAtivo(true);
-            return true;
-        }
-        return false;
-    }
 
-    public boolean devolver(Integer qtd){
-        this.quantidade =- qtd;
-        if(this.quantidade == 0){
-            exemplar.addQuantidade(this.quantidade);
-            setAtivo(false);
-            return true;
-        }
-        exemplar.addQuantidade(qtd);
-        return false;
-    }
+    /** não usado, implementado em service */
+//    public boolean emprestar(Integer qtd){
+//        this.quantidade += qtd;
+//        // verifica se exemplar tem quantidade
+//        if(exemplar.getQuantidadeTotal() >= this.quantidade){
+//            exemplar.removerQuantidade(this.quantidade);
+//            setAtivo(true);
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean devolver(Integer qtd){
+//        this.quantidade =- qtd;
+//        if(this.quantidade == 0){
+//            exemplar.addQuantidade(this.quantidade);
+//            setAtivo(false);
+//            return true;
+//        }
+//        exemplar.addQuantidade(qtd);
+//        return false;
+//    }
 
     public Emprestimo(@NotNull Date data, @NotNull Pessoa pessoa, @NotNull Exemplar exemplar, @NotNull Boolean ativo, Integer quantidade) {
         this.data = data;
@@ -113,5 +114,17 @@ public class Emprestimo {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Emprestimo{" +
+                "codigo=" + codigo +
+                ", data=" + data +
+                ", pessoa=" + pessoa +
+                ", exemplar=" + exemplar +
+                ", ativo=" + ativo +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }

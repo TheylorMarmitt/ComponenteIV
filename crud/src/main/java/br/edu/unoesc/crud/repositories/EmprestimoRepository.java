@@ -16,4 +16,8 @@ public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
 
     List<Emprestimo> findAllByAtivoTrue();
 
+    List<Emprestimo> findByExemplarTituloAndAtivoTrue(String titulo);
+
+    List<Emprestimo> findByPessoaNomeAndAtivoTrue(String nome);
+
 }

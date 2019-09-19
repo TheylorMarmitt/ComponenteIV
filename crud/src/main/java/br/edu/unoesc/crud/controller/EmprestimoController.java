@@ -36,5 +36,16 @@ public class EmprestimoController {
     	model.addAttribute("lista", service.listar());
     	return "listas/emprestados";
     }
-    
+
+    @GetMapping("/buscaTitulo")
+    public String buscaTitulo(String titulo, Model model){
+        model.addAttribute("lista", service.listarTitulo(titulo));
+        return "listas/emprestados";
+    }
+
+    @GetMapping("/buscaCliente")
+    public String buscaCliente(String cliente, Model model){
+        model.addAttribute("lista", service.listarCliente(cliente));
+        return "listas/emprestados";
+    }
 }

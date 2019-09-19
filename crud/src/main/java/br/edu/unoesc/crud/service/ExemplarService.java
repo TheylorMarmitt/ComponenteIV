@@ -39,6 +39,14 @@ public class ExemplarService implements CrudService<Exemplar> {
         return qtd;
     }
 
+    public List<Exemplar> findDisponiveis(){
+        return this.repository.findDisponiveis();
+    }
+
+    public List<Exemplar> findDisponiveisNome(String titulo){
+        return this.repository.findDisponiveisTitulo(titulo);
+    }
+
 
 
 }
