@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ListasController {
 
-    @Autowired
-    ExemplarService exemplarService;
+	@Autowired
+	private ExemplarService exemplarService;
 
-    @GetMapping("/listas/disponiveis") public String disponiveis(Model model){
-        model.addAttribute("lista", exemplarService.findDisponiveis());
-        return "listas/disponiveis";
-    }
+	@GetMapping("/listas/disponiveis")
+	public String disponiveis(Model model) {
+		model.addAttribute("lista", exemplarService.findDisponiveis());
+		return "listas/disponiveis";
+	}
 
-    @GetMapping("/buscaExemplarTitulo") public String busca( String titulo, Model model){
+	@GetMapping("/buscaExemplarTitulo")
+	public String busca(String titulo, Model model) {
 
-        model.addAttribute("lista", exemplarService.findDisponiveisNome(titulo));
-        return "listas/disponiveis";
-    }
+		model.addAttribute("lista", exemplarService.findDisponiveisNome(titulo));
+		return "listas/disponiveis";
+	}
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ExemplarController {
 
     @Autowired
-    ExemplarService service;
+    private ExemplarService service;
 
     @GetMapping("/exemplar/cadastro")
     public String cadastro() {

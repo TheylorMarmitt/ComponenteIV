@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class DevolucaoController {
 
-    @Autowired
-    DevolucaoService devolucaoService;
+	@Autowired
+	private DevolucaoService devolucaoService;
 
-    @GetMapping("/devolucao/devolucao")
-    public String devolver() {
-        return "devolucao/devolucao";
-    }
+	@GetMapping("/devolucao/devolucao")
+	public String devolver() {
+		return "devolucao/devolucao";
+	}
 
     @PostMapping("/devolucao/enviar")
     public String enviar(Devolucao devolucao){
@@ -28,4 +28,5 @@ public class DevolucaoController {
         }
         return "redirect:/";
     }
+
 }
