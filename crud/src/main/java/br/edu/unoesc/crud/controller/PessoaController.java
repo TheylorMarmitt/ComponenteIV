@@ -52,9 +52,11 @@ public class PessoaController {
 	}
 
 	@PostMapping("/pessoa/excluir")
-	public ResponseEntity<String> excluir(Pessoa pessoa) {
-		service.excluir(pessoa);
-		return new ResponseEntity<String>(HttpStatus.OK);
+	public String excluir(Pessoa pessoa, Model model) {
+		Pessoa pessoaExcluida = service.excluir(pessoa);
+		model.addAttribute("pessoa", pessoaExcluida);
+		
+		return "jsonTemplate";
 	}
 
 }
