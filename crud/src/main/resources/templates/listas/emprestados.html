@@ -68,7 +68,7 @@
                                         <th scope="col">Quantidade</th>
                                         <th scope="col">Editora</th>
                                         <th scope="col">Cliente</th>
-                                        <th scope="col">Opções</th>
+                                        <th scope="col">Devolver</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,10 +78,9 @@
                                         <td th:text="${emprestimo.quantidade}"></td>
                                         <td th:text="${emprestimo.exemplar.editora}"></td>
                                         <td th:text="${emprestimo.pessoa.nome}"></td>
-                                    	<td>
-                                    		<a class="btn btn-outline-primary"><i class="fa fa-pen"></i></a>
-                                    		<a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" th:attr="data-codigo=${emprestimo.pessoa.codigo}"><i class="fa fa-trash"></i></a>
-                                    	</td>
+                                         <td>
+                                             <a class="btn btn-outline-success" href="/devolucao/devolucao" > <i class="fa fa-share-square"></i></a>
+                                         </td>
                                     </tr>
                                 </tbody>
                             </table>

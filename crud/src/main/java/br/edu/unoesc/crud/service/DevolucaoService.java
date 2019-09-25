@@ -1,8 +1,6 @@
 package br.edu.unoesc.crud.service;
 
 import br.edu.unoesc.crud.model.Devolucao;
-import br.edu.unoesc.crud.model.Emprestimo;
-import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.repositories.DevolucaoRepository;
 import br.edu.unoesc.crud.repositories.EmprestimoRepository;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
