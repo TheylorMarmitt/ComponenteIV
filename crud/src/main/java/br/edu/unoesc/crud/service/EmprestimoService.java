@@ -15,10 +15,10 @@ import java.util.List;
 public class EmprestimoService implements CrudService<Emprestimo> {
 
     @Autowired
-    EmprestimoRepository repository;
+   private EmprestimoRepository repository;
 
     @Autowired
-    ExemplarRepository exemplarRepository;
+    private ExemplarRepository exemplarRepository;
 
     @Override
     @Transactional

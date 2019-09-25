@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EmprestimoController {
 
     @Autowired
-    EmprestimoService service;
+   private EmprestimoService service;
 
     @GetMapping("/emprestimo/cadastro")
     public String cadastro(Model model) {

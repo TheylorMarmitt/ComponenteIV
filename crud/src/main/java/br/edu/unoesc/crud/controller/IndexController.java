@@ -18,27 +18,28 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    @Autowired
-    ExemplarService exemplarService;
+	@Autowired
+	private ExemplarService exemplarService;
 
-    @Autowired
-    PessoaService pessoaService;
+	@Autowired
+	private PessoaService pessoaService;
 
-    @Autowired
-    EmprestimoService emprestimoService;
+	@Autowired
+	private EmprestimoService emprestimoService;
 
-    @GetMapping("/") public String dashboard(Model model){
+	@GetMapping("/")
+	public String dashboard(Model model) {
 
-        model.addAttribute("qtdExemplares", exemplarService.quantidade());
-        model.addAttribute("qtdPessoas", pessoaService.quantidade());
-        model.addAttribute("qtdEmprestimos", emprestimoService.quantidade());
-        model.addAttribute("qtdEmprestados", emprestimoService.quantidadeEmprestadosAtivos());
-        return "index";
-    }
+		model.addAttribute("qtdExemplares", exemplarService.quantidade());
+		model.addAttribute("qtdPessoas", pessoaService.quantidade());
+		model.addAttribute("qtdEmprestimos", emprestimoService.quantidade());
+		model.addAttribute("qtdEmprestados", emprestimoService.quantidadeEmprestadosAtivos());
+		return "index";
+	}
 
-    @RequestMapping(path = "/dadosGrafico")
-    public @ResponseBody List<Exemplar> dados() {
-        return exemplarService.listar();
-    }
+	@RequestMapping(path = "/dadosGrafico")
+	public @ResponseBody List<Exemplar> dados() {
+		return exemplarService.listar();
+	}
 
 }
