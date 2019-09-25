@@ -26,11 +26,10 @@ public class PessoaController {
 
 	@GetMapping({ "/pessoa/cadastro", "/pessoa/cadastro/{codigo}" })
 	public String cadastro(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
-		
+		model.addAttribute("pessoa", new Pessoa());
 		if (codigo != null) {
 			model.addAttribute("pessoa", service.getByCodigo(codigo).get());
 		}
-		
 		return "pessoa/cadastro";
 	}
 
