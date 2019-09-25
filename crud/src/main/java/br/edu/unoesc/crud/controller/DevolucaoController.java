@@ -22,7 +22,7 @@ public class DevolucaoController {
     @PostMapping("/devolucao/enviar")
     public String enviar(Devolucao devolucao){
         try {
-            devolucaoService.salvar(devolucao);
+            devolucaoService.salvaOuAltera(devolucao);
         } catch (Exception e) {
             e.printStackTrace();
         }

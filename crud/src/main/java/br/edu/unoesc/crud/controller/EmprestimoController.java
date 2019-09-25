@@ -24,7 +24,7 @@ public class EmprestimoController {
     @PostMapping("/emprestimo/cadastroEnviar")
     public String enviar(Emprestimo emprestimo) {
         try {
-            service.salvar(emprestimo);
+            service.salvaOuAltera(emprestimo);
         } catch (Exception e) {
             e.printStackTrace();
         }

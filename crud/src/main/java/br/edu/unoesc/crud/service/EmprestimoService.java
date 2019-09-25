@@ -22,18 +22,18 @@ public class EmprestimoService implements CrudService<Emprestimo> {
 
     @Override
     @Transactional
-    public boolean salvar(Emprestimo dado) throws Exception {
+    public Emprestimo salvaOuAltera(Emprestimo dado) throws Exception {
         dado.setExemplar(exemplarRepository.findByCodigo(dado.getExemplar().getCodigo()));
         dado = ajusteQtd(dado);
 
         this.repository.save(dado);
-        return true;
+        return dado;
     }
 
     @Override
-    public boolean excluir(Emprestimo dado) {
+    public Emprestimo excluir(Emprestimo dado) {
         this.repository.delete(dado);
-        return true;
+        return dado;
     }
 
     @Override

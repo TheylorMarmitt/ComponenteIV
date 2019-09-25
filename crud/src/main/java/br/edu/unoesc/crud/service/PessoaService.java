@@ -16,15 +16,16 @@ public class PessoaService implements CrudService<Pessoa> {
 	private PessoaRepository repository;
 	
 	@Override
-	public boolean salvar(Pessoa dado) {
+	public Pessoa salvaOuAltera(Pessoa dado) {
+		
 		repository.save(dado);
-		return true;
+		return dado;
 	}
 
 	@Override
-	public boolean excluir(Pessoa dado) {
+	public Pessoa excluir(Pessoa dado) {
 		repository.delete(dado);
-		return true;
+		return dado;
 	}
 
 	@Override

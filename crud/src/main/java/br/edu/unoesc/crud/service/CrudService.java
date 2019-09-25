@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CrudService <T> {
 
-	boolean salvar(T dado) throws Exception;
+	T salvaOuAltera(T dado) throws Exception;
 
-	boolean excluir (T dado);
+	T excluir (T dado);
 	
 	List<T> listar();
 }

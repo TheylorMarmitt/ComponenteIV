@@ -26,7 +26,7 @@ public class DevolucaoService implements CrudService<Devolucao> {
 
 	@Override
 	@Transactional
-	public boolean salvar(Devolucao dado) throws Exception {
+	public Devolucao salvaOuAltera(Devolucao dado) throws Exception {
 
 		dado.setEmprestimo(emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo()));
 		dado.getEmprestimo()
@@ -35,12 +35,12 @@ public class DevolucaoService implements CrudService<Devolucao> {
 		dado = ajustes(dado);
 
 		this.repository.save(dado);
-		return true;
+		return dado;
 	}
 
 	@Override
-	public boolean excluir(Devolucao dado) {
-		return false;
+	public Devolucao excluir(Devolucao dado) {
+		return dado;
 	}
 
 	@Override

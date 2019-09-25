@@ -40,7 +40,7 @@ public class PessoaController {
 			model.addAttribute("pessoa", pessoa);
 			return "pessoa/cadastro";
 		}
-		service.salvar(pessoa);
+		service.salvaOuAltera(pessoa);
 		return "pessoa/cadastro";
 	}
 

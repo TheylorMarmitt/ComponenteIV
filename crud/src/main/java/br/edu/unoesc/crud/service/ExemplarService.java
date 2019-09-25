@@ -14,15 +14,15 @@ public class ExemplarService implements CrudService<Exemplar> {
 	private ExemplarRepository repository;
 
 	@Override
-	public boolean salvar(Exemplar dado) {
+	public Exemplar salvaOuAltera(Exemplar dado) {
 		this.repository.save(dado);
-		return true;
+		return dado;
 	}
 
 	@Override
-	public boolean excluir(Exemplar dado) {
+	public Exemplar excluir(Exemplar dado) {
 		this.repository.delete(dado);
-		return true;
+		return dado;
 	}
 
 	@Override

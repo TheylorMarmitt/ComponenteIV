@@ -20,7 +20,7 @@ public class ExemplarController {
 
     @PostMapping("/exemplar/enviar")
     public String formulario(Exemplar exemplar) {
-        this.service.salvar(exemplar);
+        this.service.salvaOuAltera(exemplar);
         return "redirect:/";
     }
 }
