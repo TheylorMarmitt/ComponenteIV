@@ -26,6 +26,6 @@ public class DevolucaoController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "/";
+        return "redirect:/";
     }
 }

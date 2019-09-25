@@ -28,7 +28,7 @@ public class EmprestimoController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "index";
+        return "redirect:/";
     }
     
     @GetMapping("/emprestimo/lista")
