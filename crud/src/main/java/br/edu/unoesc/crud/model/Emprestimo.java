@@ -3,7 +3,9 @@ package br.edu.unoesc.crud.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -14,22 +16,27 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @NotNull
+    @NotNull(message = "Data inválida")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
     @NotNull
+    @NotNull(message = "Pessoa obrigatória")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa = new Pessoa();
 
-    @NotNull
+    @NotNull(message = "Exemplar obrigatório")
     @ManyToOne
     @JoinColumn(name = "exemplar_id")
     private Exemplar exemplar = new Exemplar();
 
     @NotNull
     private Boolean ativo;
+
+    @NotNull(message = "Quantidade obrigatória")
+    @NotEmpty(message = "Quantidade obrigatório")
+    @Size(min = 1, max = 10000, message = "Quantidade inválido")
     private Integer quantidade;
 
 

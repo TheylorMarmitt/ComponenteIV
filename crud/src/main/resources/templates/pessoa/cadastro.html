@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
+
 <head th:data-th-replace="@{fragments/imports :: head}" >
 
 </head>
@@ -32,35 +33,42 @@
                         <div class="card-header">
                             <h5 class="title">Cadastro de pessoa</h5>
                         </div>
-                        <form th:action="@{/pessoa/cadastro}" method="post">
+                        <form th:action="@{/pessoa/cadastro}" method="post" th:object="${pessoa}">
+
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Nome:</label>
-                                    <input type="text" name="nome" th:value="${pessoa.nome}" class="form-control">
+                                    <input type="text" th:field="*{nome}" th:value="${pessoa.nome}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro de nome</label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Sobrenome:</label>
-                                    <input type="text" name="sobrenome" th:value="${pessoa.sobrenome}" class="form-control">
+                                    <input type="text" th:field="*{sobrenome}" th:value="${pessoa.sobrenome}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">Erro de sobrenome</label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Data nascimento:</label>
-                                    <input type="date" name="dataNascimento" th:type="date" th:value="${#dates.format(pessoa.dataNascimento, 'yyyy-MM-dd')}" class="form-control">
+                                    <input type="date" th:field="*{dataNascimento}" th:type="date" th:value="${#dates.format(pessoa.dataNascimento, 'yyyy-MM-dd')}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></label>
+
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>E-mail:</label>
-                                    <input type="text" name="email" th:value="${pessoa.email}" class="form-control">
+                                    <input type="text" th:field="*{email}" th:value="${pessoa.email}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>CPF:</label>
-                                    <input type="text" name="cpf" th:value="${pessoa.cpf}" class="form-control">
+                                    <input type="text" th:field="*{cpf}" th:value="${pessoa.cpf}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></label>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-2">

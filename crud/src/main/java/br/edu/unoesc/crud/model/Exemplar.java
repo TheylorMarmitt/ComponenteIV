@@ -1,7 +1,9 @@
 package br.edu.unoesc.crud.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Exemplar")
@@ -12,15 +14,33 @@ public class Exemplar {
     private Long codigo;
 
     @NotNull
+    @NotEmpty(message = "Título obrigatório")
+    @Size(min = 1, max = 150, message = "Título inválido")
     private String titulo;
 
     @NotNull
+    @NotEmpty(message = "Autor obrigatório")
+    @Size(min = 1, max = 150, message = "Autor inválido")
     private String autor;
 
+    @NotNull
+    @NotEmpty(message = "Gênero obrigatório")
+    @Size(min = 1, max = 150, message = "Gênero inválido")
     private String genero;
+
+    @NotNull
+    @NotEmpty(message = "Editora obrigatório")
+    @Size(min = 1, max = 150, message = "Editora inválido")
     private String editora;
+
+    @NotNull
+    @NotEmpty(message = "Ano obrigatório")
+    @Size(min = 4, max = 4, message = "Ano inválido, deve conter 4 digitos")
     private Integer anoPublicacao;
 
+    @NotNull
+    @NotEmpty(message = "Quantidade obrigatória")
+    @Size(min = 1, message = "Quantidade deve ser maior que 0")
     private Integer quantidadeTotal;
 
     public void addQuantidade(Integer quantidade){
@@ -111,5 +131,18 @@ public class Exemplar {
 
     public void setQuantidadeTotal(Integer quantidadeTotal) {
         this.quantidadeTotal = quantidadeTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "Exemplar{" +
+                "codigo=" + codigo +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", genero='" + genero + '\'' +
+                ", editora='" + editora + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                ", quantidadeTotal=" + quantidadeTotal +
+                '}';
     }
 }

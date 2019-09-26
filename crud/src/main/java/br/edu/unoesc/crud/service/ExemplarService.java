@@ -47,4 +47,8 @@ public class ExemplarService implements CrudService<Exemplar> {
 		return this.repository.findDisponiveisTitulo(titulo);
 	}
 
+	public Exemplar getByCodigo(Long codigo){
+		return repository.findByCodigo(codigo);
+	}
+
 }

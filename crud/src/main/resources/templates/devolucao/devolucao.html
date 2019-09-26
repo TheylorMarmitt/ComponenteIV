@@ -32,23 +32,26 @@
                         <div class="card-header">
                             <h5 class="title">Devolução</h5>
                         </div>
-                        <form th:action="@{/devolucao/enviar}", method="post">
+                        <form th:action="@{/devolucao/enviar}" method="post" th:object="${devolucao}">
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Código do emprestimo:</label>
-                                    <input type="number" name="emprestimo.codigo" th:value="${emprestimo.codigo}" class="form-control">
+                                    <input type="number" name="emprestimo.codigo"  th:value="${emprestimo.codigo}" class="form-control">
+<!--                                    <p class="text-danger" th:if="${#fields.hasErrors('emprestimo')}" th:errors="*{emprestimo}"></p>-->
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Data:</label>
                                     <input type="date" name="data" class="form-control">
+<!--                                    <p class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></p>-->
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Quantidade:</label>
                                     <input type="number" name="quantidade" class="form-control">
+<!--                                    <p class="text-danger" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></p>-->
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-2">

@@ -3,7 +3,9 @@ package br.edu.unoesc.crud.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -14,18 +16,20 @@ public class Devolucao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @NotNull
+    @NotNull(message = "Data inválida")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
-    @NotNull
+    @NotNull(message = "Emprestimo obrigatório")
+    @NotEmpty(message = "Emprestimo obrigatório")
     @ManyToOne
     @JoinColumn(name = "emprestimo_id")
     private Emprestimo emprestimo;
 
     @NotNull
+    @NotEmpty(message = "Quantidade obrigatório")
+    @Size(min = 1, message = "Quantidade inválida, deve ser maior que 0")
     private Integer quantidade;
-
 
     public Devolucao(@NotNull Date data, @NotNull Emprestimo emprestimo, @NotNull Integer quantidade) {
         this.data = data;

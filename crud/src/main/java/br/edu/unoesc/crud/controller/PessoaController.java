@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.unoesc.crud.model.Pessoa;
 import br.edu.unoesc.crud.service.PessoaService;
@@ -40,7 +39,7 @@ public class PessoaController {
 			return "pessoa/cadastro";
 		}
 		service.salvaOuAltera(pessoa);
-		return "pessoa/cadastro";
+		return "redirect:/";
 	}
 
 	@GetMapping("/pessoa/lista")

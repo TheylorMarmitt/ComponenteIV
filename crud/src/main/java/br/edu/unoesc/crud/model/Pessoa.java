@@ -1,12 +1,13 @@
 package br.edu.unoesc.crud.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import br.edu.unoesc.crud.reflection.CampoTela;
 
 import java.util.Date;
 
@@ -15,28 +16,30 @@ import java.util.Date;
 public class Pessoa {
 
     @Id
-    @CampoTela
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
     @NotNull
-    @CampoTela
+    @NotEmpty(message = "Nome obrigatório")
+    @Size(min = 1, max = 150, message = "Nome inválido")
     private String nome;
-    @NotNull
-    @CampoTela
+
+    @NotEmpty(message = "Sobrenome obrigatório")
+    @Size(min = 1, max = 150, message = "Sobrenome inválido")
     private String sobrenome;
     
-    @NotNull
-    @CampoTela
+    @NotNull(message = "Data obrigatória")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
 
     @NotNull
-    @CampoTela
+    @Email( message = "E-mail inválido")
+    @Size(min = 1, message = "E-mail inválido")
     private String email;
 
-    @NotNull(message="CPF obrigatório")
-    @Size(min = 11, max = 11, message = "CPF inválido")
+    @NotNull
+    @NotEmpty(message = "CPF obrigatório")
+    @CPF(message = "CPF inválido")
     private String cpf;
 
     public Pessoa(Long codigo) {

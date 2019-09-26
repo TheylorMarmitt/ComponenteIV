@@ -43,8 +43,9 @@
                                 <div class="form-group">
                                     <label>Exemplar:</label>
                                     <select class="form-control" name="exemplar" id="exemplar">
-                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal} " ></option>
+                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal}" th:selected="${objeto.codigo == exemplar.codigo}" ></option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="container-fluid">
