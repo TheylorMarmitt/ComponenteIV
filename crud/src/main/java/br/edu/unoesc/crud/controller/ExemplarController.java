@@ -20,12 +20,13 @@ public class ExemplarController {
     private ExemplarService service;
 
     @GetMapping("/exemplar/cadastro")
-    public String cadastro() {
+    public String cadastro(Model model) {
+        model.addAttribute("exemplar", new Exemplar());
         return "exemplar/cadastro";
     }
 
     @PostMapping("/exemplar/enviar")
-    public String formulario(Model model, @Valid @ModelAttribute("Exemplar") Exemplar exemplar, BindingResult bindingResult) {
+    public String formulario(@Valid @ModelAttribute("exemplar") Exemplar exemplar, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
             model.addAttribute("exemplar", exemplar);
             return "exemplar/cadastro";

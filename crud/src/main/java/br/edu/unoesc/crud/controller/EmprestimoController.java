@@ -24,8 +24,8 @@ public class EmprestimoController {
 
     @GetMapping({ "/emprestimo/cadastro", "/emprestimo/cadastro/{codigo}" })
     public String devolver(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
-
         model.addAttribute("exemplar", new Exemplar());
+        model.addAttribute("emprestimo", new Emprestimo());
         if (codigo != null) {
             model.addAttribute("exemplar", exemplarService.getByCodigo(codigo));
         }

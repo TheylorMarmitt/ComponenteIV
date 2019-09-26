@@ -3,9 +3,9 @@ package br.edu.unoesc.crud.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -21,14 +21,12 @@ public class Devolucao {
     private Date data;
 
     @NotNull(message = "Emprestimo obrigatório")
-    @NotEmpty(message = "Emprestimo obrigatório")
     @ManyToOne
     @JoinColumn(name = "emprestimo_id")
     private Emprestimo emprestimo;
 
-    @NotNull
-    @NotEmpty(message = "Quantidade obrigatório")
-    @Size(min = 1, message = "Quantidade inválida, deve ser maior que 0")
+    @NotNull(message = "Quantidade obrigatória")
+    @Min(value = 1, message = "Quantidade inválida, deve ser maior que 0")
     private Integer quantidade;
 
     public Devolucao(@NotNull Date data, @NotNull Emprestimo emprestimo, @NotNull Integer quantidade) {

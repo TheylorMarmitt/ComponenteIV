@@ -1,9 +1,7 @@
 package br.edu.unoesc.crud.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "Exemplar")
@@ -29,18 +27,17 @@ public class Exemplar {
     private String genero;
 
     @NotNull
-    @NotEmpty(message = "Editora obrigatório")
+    @NotEmpty(message = "Editora obrigatória")
     @Size(min = 1, max = 150, message = "Editora inválido")
     private String editora;
 
-    @NotNull
-    @NotEmpty(message = "Ano obrigatório")
-    @Size(min = 4, max = 4, message = "Ano inválido, deve conter 4 digitos")
+    @NotNull(message = "Ano de Publicação obrigatório")
+    @Min(value = 4, message = "Tamanho mínimo = 4")
+    @Max(value = 4, message = "Tamanho máximo = 4")
     private Integer anoPublicacao;
 
-    @NotNull
-    @NotEmpty(message = "Quantidade obrigatória")
-    @Size(min = 1, message = "Quantidade deve ser maior que 0")
+    @NotNull(message = "Quantidade obrigatória")
+    @Min(value = 1, message = "Quantidade inválida")
     private Integer quantidadeTotal;
 
     public void addQuantidade(Integer quantidade){

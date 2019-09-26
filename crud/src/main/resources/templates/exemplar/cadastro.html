@@ -34,9 +34,9 @@
                         </div>
                         <form th:action="@{/exemplar/enviar}" method="post" th:object="${exemplar}">
                             <div class="container-fluid">
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label>Título:</label>
-                                    <input type="text"  th:field="*{titulo}" class="form-control">
+                                    <input type="text"  th:field="*{titulo}" class="form-control" >
                                     <label class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></label>
                                 </div>
                             </div>
