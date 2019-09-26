@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CrudService <T> {
 
-	T salvaOuAltera(T dado) throws Exception;
+	T salvaOuAltera(T dado) ;
 
 	T excluir (T dado);
 	

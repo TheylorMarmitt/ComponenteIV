@@ -1,5 +1,6 @@
 package br.edu.unoesc.crud.service;
 
+import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.model.Pessoa;
@@ -22,7 +23,7 @@ public class EmprestimoService implements CrudService<Emprestimo> {
 
     @Override
     @Transactional
-    public Emprestimo salvaOuAltera(Emprestimo dado) throws Exception {
+    public Emprestimo salvaOuAltera(Emprestimo dado)  {
         dado.setExemplar(exemplarRepository.findByCodigo(dado.getExemplar().getCodigo()));
         dado = ajusteQtd(dado);
 
@@ -76,14 +77,14 @@ public class EmprestimoService implements CrudService<Emprestimo> {
         return quantidade;
     }
 
-    private Emprestimo ajusteQtd(Emprestimo dado) throws Exception {
+    private Emprestimo ajusteQtd(Emprestimo dado) {
 
         if(dado.getExemplar().getQuantidadeTotal() >= dado.getQuantidade()){
             dado.getExemplar().removerQuantidade(dado.getQuantidade());
             dado.setAtivo(true);
 
         }else{
-            throw new Exception("Exemplar não pode ser nulo");
+            throw new BestBooksException("Exemplar não pode ser nulo");
         }
         this.exemplarRepository.saveAndFlush(dado.getExemplar());
         return dado;
@@ -97,4 +98,9 @@ public class EmprestimoService implements CrudService<Emprestimo> {
         }
         return lista;
     }
+
+    public Emprestimo getByCodigo(Long codigo){
+        return repository.findByCodigo(codigo);
+    }
+
 }

@@ -79,7 +79,7 @@
                                         <td th:text="${emprestimo.exemplar.editora}"></td>
                                         <td th:text="${emprestimo.pessoa.nome}"></td>
                                          <td>
-                                             <a class="btn btn-outline-success" href="/devolucao/devolucao" > <i class="fa fa-share-square"></i></a>
+                                             <a class="btn btn-outline-success" th:href="@{../devolucao/devolucao/{codigo}(codigo=${emprestimo.codigo})}" > <i class="fa fa-share-square"></i></a>
                                          </td>
                                     </tr>
                                 </tbody>

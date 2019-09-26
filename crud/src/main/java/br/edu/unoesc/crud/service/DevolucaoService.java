@@ -1,6 +1,8 @@
 package br.edu.unoesc.crud.service;
 
+import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Devolucao;
+import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.repositories.DevolucaoRepository;
 import br.edu.unoesc.crud.repositories.EmprestimoRepository;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
@@ -24,7 +26,7 @@ public class DevolucaoService implements CrudService<Devolucao> {
 
 	@Override
 	@Transactional
-	public Devolucao salvaOuAltera(Devolucao dado) throws Exception {
+	public Devolucao salvaOuAltera(Devolucao dado)  {
 
 		dado.setEmprestimo(emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo()));
 		dado.getEmprestimo()
@@ -46,7 +48,7 @@ public class DevolucaoService implements CrudService<Devolucao> {
 		return null;
 	}
 
-	private Devolucao ajustes(Devolucao d) throws Exception {
+	private Devolucao ajustes(Devolucao d)  {
 		if (d.getQuantidade() <= d.getEmprestimo().getQuantidade()) {
 			d.getEmprestimo().setQuantidade(d.getEmprestimo().getQuantidade() - d.getQuantidade());
 
@@ -56,7 +58,7 @@ public class DevolucaoService implements CrudService<Devolucao> {
 			d.getEmprestimo().getExemplar().addQuantidade(d.getQuantidade());
 
 		} else {
-			throw new Exception("Quantidade de devolução maior que emprestados");
+			throw new BestBooksException("Quantidade de devolução maior que emprestados");
 		}
 		this.emprestimoRepository.saveAndFlush(d.getEmprestimo());
 		this.exemplarRepository.saveAndFlush(d.getEmprestimo().getExemplar());
