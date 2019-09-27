@@ -44,6 +44,7 @@ public class EmprestimoController {
     public String enviar(Model model, @Valid Emprestimo emprestimo, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("emprestimo", emprestimo);
+            model.addAttribute("exemplar", emprestimo.getExemplar());
             model.addAttribute("lista", service.listarExemplares());
             return "emprestimo/cadastro";
         }
