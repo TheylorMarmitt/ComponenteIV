@@ -3,10 +3,8 @@ package br.edu.unoesc.crud.controller;
 import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Devolucao;
 import br.edu.unoesc.crud.model.Emprestimo;
-import br.edu.unoesc.crud.model.Pessoa;
 import br.edu.unoesc.crud.service.DevolucaoService;
 import br.edu.unoesc.crud.service.EmprestimoService;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,11 +28,12 @@ public class DevolucaoController {
     @GetMapping({ "/devolucao/devolucao", "/devolucao/devolucao/{codigo}" })
     public String devolver(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
 
-        model.addAttribute("emprestimo", new Emprestimo());
+        model.addAttribute("emprestimoObj", new Emprestimo());
         model.addAttribute("devolucao", new Devolucao());
 
         if (codigo != null) {
-            model.addAttribute("emprestimo", emprestimoService.getByCodigo(codigo));
+
+            model.addAttribute("emprestimoObj", emprestimoService.getByCodigo(codigo));
         }
         return "devolucao/devolucao";
     }
