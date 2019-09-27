@@ -32,15 +32,16 @@
                         <div class="card-header">
                             <h5 class="title">Emprestar</h5>
                         </div>
-                        <form th:action="@{/emprestimo/cadastroEnviar}" method="post">
+                        <form th:action="@{/emprestimo/cadastroEnviar}" method="post" th:object="${emprestimo}">
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Código cliente:</label>
-                                    <input type="number" name="pessoa.codigo" class="form-control">
+                                    <input type="number" th:field="*{pessoa}" name="pessoa.codigo" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}"></label>
                                 </div>
                             </div>
-                            <div class="container-fluid">
-                                <div class="form-group">
+                            <div class="container-fluid" th:object="${lista}">
+                                <div class="form-group" >
                                     <label>Exemplar:</label>
                                     <select class="form-control" name="exemplar" id="exemplar">
                                         <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal}" th:selected="${objeto.codigo == exemplar.codigo}" ></option>
@@ -51,13 +52,15 @@
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Data:</label>
-                                    <input type="date" name="data" class="form-control">
+                                    <input type="date" th:field="*{data}" name="data" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Quantidade:</label>
-                                    <input type="number" name="quantidade" class="form-control">
+                                    <input type="number" th:field="*{quantidade}" name="quantidade" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></label>
                                 </div>
                             </div>
 <!--                            <div class="container-fluid">-->

@@ -1,6 +1,7 @@
 package br.edu.unoesc.crud.controller;
 
 import br.edu.unoesc.crud.exception.BestBooksException;
+import br.edu.unoesc.crud.model.Devolucao;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.service.EmprestimoService;
@@ -8,9 +9,12 @@ import br.edu.unoesc.crud.service.ExemplarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class EmprestimoController {
@@ -37,7 +41,12 @@ public class EmprestimoController {
 
 
     @PostMapping("/emprestimo/cadastroEnviar")
-    public String enviar(Emprestimo emprestimo) {
+    public String enviar(Model model, @Valid Emprestimo emprestimo, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("emprestimo", emprestimo);
+            model.addAttribute("lista", service.listarExemplares());
+            return "emprestimo/cadastro";
+        }
         try {
             service.salvaOuAltera(emprestimo);
         } catch (BestBooksException e) {
