@@ -1,5 +1,7 @@
 package br.edu.unoesc.crud.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -32,8 +34,6 @@ public class Exemplar {
     private String editora;
 
     @NotNull(message = "Ano de Publicação obrigatório")
-    @Min(value = 4, message = "Tamanho mínimo = 4")
-    @Max(value = 4, message = "Tamanho máximo = 4")
     private Integer anoPublicacao;
 
     @NotNull(message = "Quantidade obrigatória")

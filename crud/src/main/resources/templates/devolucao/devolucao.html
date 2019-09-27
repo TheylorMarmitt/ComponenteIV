@@ -36,22 +36,22 @@
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Código do emprestimo:</label>
-                                    <input type="number" th:field="*{emprestimo.codigo}"  th:value="${emprestimo.codigo}" class="form-control">
-                                    <p class="text-danger" th:if="${#fields.hasErrors('emprestimo')}" th:errors="*{emprestimo}"></p>
+                                    <input type="number" th:field="*{emprestimo}" name="emprestimo.codigo" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('emprestimo')}" th:errors="*{emprestimo}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Data:</label>
                                     <input type="date" th:field="*{data}" class="form-control">
-                                    <p class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></p>
+                                    <label class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Quantidade:</label>
                                     <input type="number" th:field="*{quantidade}" class="form-control">
-                                    <p class="text-danger" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></p>
+                                    <label class="text-danger" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></label>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-2">

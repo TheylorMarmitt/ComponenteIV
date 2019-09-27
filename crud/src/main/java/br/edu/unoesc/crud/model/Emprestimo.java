@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 @Table(name = "Emprestimo")
 public class Emprestimo {
 
+    @NotNull(message = "Informe o Emprestimo")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;

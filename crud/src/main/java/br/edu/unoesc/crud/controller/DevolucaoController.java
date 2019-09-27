@@ -29,8 +29,10 @@ public class DevolucaoController {
 
     @GetMapping({ "/devolucao/devolucao", "/devolucao/devolucao/{codigo}" })
     public String devolver(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
+
         model.addAttribute("emprestimo", new Emprestimo());
         model.addAttribute("devolucao", new Devolucao());
+
         if (codigo != null) {
             model.addAttribute("emprestimo", emprestimoService.getByCodigo(codigo));
         }
