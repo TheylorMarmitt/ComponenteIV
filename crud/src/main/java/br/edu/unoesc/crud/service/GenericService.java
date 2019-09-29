@@ -2,11 +2,16 @@ package br.edu.unoesc.crud.service;
 
 import java.util.List;
 
-public interface CrudService <T> {
+import br.edu.unoesc.crud.model.EntidadePersistente;
 
-	T salvaOuAltera(T dado) throws Exception;
-
-	T excluir (T dado);
+public interface GenericService <T extends EntidadePersistente> {
 	
+	T salvaOuAltera(T dado);
+
 	List<T> listar();
+
+	T excluir (Long codigo);
+	
+	T getByCodigo(Long codigo);
+	
 }

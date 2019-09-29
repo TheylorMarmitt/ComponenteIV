@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ExemplarRepository extends JpaRepository<Exemplar, Long> {
+public interface ExemplarRepository extends BestBooksRepository<Exemplar> {
 
     Exemplar findByTitulo(String titulo);
 

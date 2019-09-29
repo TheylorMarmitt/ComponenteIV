@@ -11,7 +11,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class DevolucaoService implements CrudService<Devolucao> {
+public class DevolucaoServiceImpl extends AbstractCrudService<Devolucao,DevolucaoRepository>implements DevolucaoService {
+
+	public DevolucaoServiceImpl(DevolucaoRepository repository) {
+		super(repository);
+	}
 
 	@Autowired
 	private DevolucaoRepository repository;
@@ -24,7 +28,7 @@ public class DevolucaoService implements CrudService<Devolucao> {
 
 	@Override
 	@Transactional
-	public Devolucao salvaOuAltera(Devolucao dado) throws Exception {
+	public Devolucao salvaOuAltera(Devolucao dado) {
 
 		dado.setEmprestimo(emprestimoRepository.findByCodigo(dado.getEmprestimo().getCodigo()));
 		dado.getEmprestimo()
@@ -36,15 +40,9 @@ public class DevolucaoService implements CrudService<Devolucao> {
 		return dado;
 	}
 
-	@Override
-	public Devolucao excluir(Devolucao dado) {
-		return dado;
-	}
+	
 
-	@Override
-	public List<Devolucao> listar() {
-		return null;
-	}
+	
 
 	private Devolucao ajustes(Devolucao d) throws Exception {
 		if (d.getQuantidade() <= d.getEmprestimo().getQuantidade()) {

@@ -1,6 +1,6 @@
 package br.edu.unoesc.crud.controller;
 
-import br.edu.unoesc.crud.service.ExemplarService;
+import br.edu.unoesc.crud.service.ExemplarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ListasController {
 
 	@Autowired
-	private ExemplarService exemplarService;
+	private ExemplarServiceImpl exemplarService;
 
 	@GetMapping("/listas/disponiveis")
 	public String disponiveis(Model model) {

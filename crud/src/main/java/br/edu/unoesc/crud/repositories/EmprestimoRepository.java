@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
+public interface EmprestimoRepository extends BestBooksRepository<Emprestimo> {
 
     List<Emprestimo> findByAtivoTrueAndPessoaCodigo(long codigo);
 

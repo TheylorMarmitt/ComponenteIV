@@ -5,9 +5,11 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Exemplar")
-public class Exemplar {
+public class Exemplar implements EntidadePersistente {
 
-    @Id
+	private static final long serialVersionUID = -1061133339255389931L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 

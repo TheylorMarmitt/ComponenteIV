@@ -3,8 +3,8 @@ package br.edu.unoesc.crud.controller;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
 import br.edu.unoesc.crud.service.EmprestimoService;
-import br.edu.unoesc.crud.service.ExemplarService;
-import br.edu.unoesc.crud.service.PessoaService;
+import br.edu.unoesc.crud.service.ExemplarServiceImpl;
+import br.edu.unoesc.crud.service.PessoaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -19,10 +19,10 @@ import java.util.List;
 public class IndexController {
 
 	@Autowired
-	private ExemplarService exemplarService;
+	private ExemplarServiceImpl exemplarService;
 
 	@Autowired
-	private PessoaService pessoaService;
+	private PessoaServiceImpl pessoaService;
 
 	@Autowired
 	private EmprestimoService emprestimoService;

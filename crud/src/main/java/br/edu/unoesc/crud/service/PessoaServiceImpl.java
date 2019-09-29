@@ -10,36 +10,25 @@ import br.edu.unoesc.crud.model.Pessoa;
 import br.edu.unoesc.crud.repositories.PessoaRepository;
 
 @Service
-public class PessoaService implements CrudService<Pessoa> {
+public class PessoaServiceImpl extends AbstractCrudService<Pessoa, PessoaRepository> implements GenericService<Pessoa> {
+
+	public PessoaServiceImpl(PessoaRepository repository) {
+		super(repository);
+	}
 
 	@Autowired
 	private PessoaRepository repository;
-	
+
 	@Override
 	public Pessoa salvaOuAltera(Pessoa dado) {
-		
+
 		repository.save(dado);
 		return dado;
 	}
 
-	@Override
-	public Pessoa excluir(Pessoa dado) {
-		repository.delete(dado);
-		return dado;
-	}
 
-	@Override
-	public List<Pessoa> listar() {
-		return repository.findAll();
-	}
-
-	public Integer quantidade(){
+	public Integer quantidade() {
 		return this.repository.findAll().size();
 	}
-	
-	public Optional<Pessoa> getByCodigo(Long codigo) {
-		return repository.findById(codigo);
-	}
-
 
 }

@@ -2,7 +2,7 @@ package br.edu.unoesc.crud.controller;
 
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.service.EmprestimoService;
-import br.edu.unoesc.crud.service.ExemplarService;
+import br.edu.unoesc.crud.service.ExemplarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ public class EmprestimoController {
 
     @GetMapping("/emprestimo/cadastro")
     public String cadastro(Model model) {
-        model.addAttribute("lista", service.listarExemplares());
+        model.addAttribute("lista", service.listar());
         return "emprestimo/cadastro";
     }
 

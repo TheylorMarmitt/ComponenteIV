@@ -1,7 +1,7 @@
 package br.edu.unoesc.crud.controller;
 
 import br.edu.unoesc.crud.model.Devolucao;
-import br.edu.unoesc.crud.service.DevolucaoService;
+import br.edu.unoesc.crud.service.DevolucaoServiceImpl;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DevolucaoController {
 
 	@Autowired
-	private DevolucaoService devolucaoService;
+	private DevolucaoServiceImpl devolucaoService;
 
 	@GetMapping("/devolucao/devolucao")
 	public String devolver() {

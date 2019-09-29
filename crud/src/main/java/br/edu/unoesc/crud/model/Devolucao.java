@@ -8,9 +8,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Devolucao")
-public class Devolucao {
+public class Devolucao implements EntidadePersistente {
 
-    @Id
+	private static final long serialVersionUID = -3444001196821052650L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 

@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExemplarService implements CrudService<Exemplar> {
+public class ExemplarServiceImpl extends AbstractCrudService<Exemplar, ExemplarRepository> implements ExemplarService {
+
+	public ExemplarServiceImpl(ExemplarRepository repository) {
+		super(repository);
+	}
 
 	@Autowired
 	private ExemplarRepository repository;
@@ -19,11 +23,6 @@ public class ExemplarService implements CrudService<Exemplar> {
 		return dado;
 	}
 
-	@Override
-	public Exemplar excluir(Exemplar dado) {
-		this.repository.delete(dado);
-		return dado;
-	}
 
 	@Override
 	public List<Exemplar> listar() {

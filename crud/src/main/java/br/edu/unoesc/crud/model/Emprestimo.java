@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Emprestimo")
-public class Emprestimo {
+public class Emprestimo implements EntidadePersistente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,21 +14,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.edu.unoesc.crud.model.Pessoa;
-import br.edu.unoesc.crud.service.PessoaService;
+import br.edu.unoesc.crud.service.PessoaServiceImpl;
 
 @Controller
 public class PessoaController {
 
 	@Autowired
-	private PessoaService service;
+	private PessoaServiceImpl service;
 
 	@GetMapping({ "/pessoa/cadastro", "/pessoa/cadastro/{codigo}" })
 	public String cadastro(@PathVariable(value="codigo", required=false) Long codigo, Model model) {
 		model.addAttribute("pessoa", new Pessoa());
 		if (codigo != null) {
-			model.addAttribute("pessoa", service.getByCodigo(codigo).get());
+			model.addAttribute("pessoa", service.getByCodigo(codigo));
 		}
 		return "pessoa/cadastro";
 	}
@@ -50,12 +51,12 @@ public class PessoaController {
 		return "pessoa/lista";
 	}
 
+	@ResponseBody
 	@PostMapping("/pessoa/excluir")
-	public String excluir(Pessoa pessoa, Model model) {
-		Pessoa pessoaExcluida = service.excluir(pessoa);
-		model.addAttribute("pessoa", pessoaExcluida);
+	public Pessoa excluir(Pessoa pessoa) {
+		Pessoa pessoaExcluida = service.excluir(pessoa.getCodigo());
 		
-		return "jsonTemplate";
+		return pessoaExcluida;
 	}
 
 }
