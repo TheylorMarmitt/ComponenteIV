@@ -127,7 +127,6 @@ public class Emprestimo {
         return "Emprestimo{" +
                 "codigo=" + codigo +
                 ", data=" + data +
-                ", pessoa=" + pessoa +
                 ", exemplar=" + exemplar +
                 ", ativo=" + ativo +
                 ", quantidade=" + quantidade +
