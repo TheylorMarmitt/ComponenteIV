@@ -1,0 +1,107 @@
+<!--
+=========================================================
+ Paper Dashboard 2 - v2.0.0
+=========================================================
+
+ Product Page: https:/www.creative-tim.com/product/paper-dashboard-2
+ Copyright 2019 Creative Tim (https:/www.creative-tim.com)
+ Licensed under MIT (https:/github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
+
+ Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:data-th-replace="@{fragments/imports :: head}" >
+
+</head>
+
+<body class="">
+
+<div class="wrapper ">
+
+    <!--    menu lateral-->
+<!--    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>-->
+
+    <div class="main-panel">
+
+        <!-- Navbar -->
+        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
+        <!-- End Navbar -->
+        <!-- <div class="panel-header panel-header-lg">
+
+    <canvas id="bigDashboardChart"></canvas>
+
+
+  </div> -->
+        <div class="content">
+
+            <!--        cards-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="title">Login</h5>
+                        </div>
+                        <form action="/do_login" method="post">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label>User:</label>
+                                    <input type="text" name="usuario" class="form-control">
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label>Senha:</label>
+                                    <input type="text" name="senha" class="form-control">
+                                </div>
+                            </div>
+                            <input type="submit" >
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!--banner-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header ">
+                            <h5 class="card-title">Exemplares por título</h5>
+                            <p class="card-category">Quantidade de exemplares</p>
+                        </div>
+                        <div class="card-body ">
+                            <canvas id=grafico width="400" height="180"></canvas>
+                        </div>
+                        <div class="card-footer ">
+                            <hr>
+                            <!--                -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--      rodape-->
+            <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
+
+        </div>
+    </div>
+
+
+    <div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
+
+</body>
+
+</html>
