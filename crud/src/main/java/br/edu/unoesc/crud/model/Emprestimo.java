@@ -129,7 +129,6 @@ public class Emprestimo implements EntidadePersistente {
         return "Emprestimo{" +
                 "codigo=" + codigo +
                 ", data=" + data +
-                ", pessoa=" + pessoa +
                 ", exemplar=" + exemplar +
                 ", ativo=" + ativo +
                 ", quantidade=" + quantidade +

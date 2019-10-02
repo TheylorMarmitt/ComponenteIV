@@ -36,7 +36,7 @@
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Código do emprestimo:</label>
-                                    <input type="number" th:field="*{emprestimo}" name="emprestimo.codigo"  class="form-control">
+                                    <input type="number" th:field="*{emprestimo}" name="emprestimo.codigo" id="cod" class="form-control">
                                     <label class="text-danger" th:if="${#fields.hasErrors('emprestimo')}" th:errors="*{emprestimo}"></label>
                                 </div>
                             </div>
@@ -60,6 +60,7 @@
                                 </div>
                             </div>
                         </form>
+                        <input th:value="${emprestimoObj.codigo}" id="emp" hidden>
                     </div>
 
                 </div>
@@ -74,6 +75,13 @@
 
 
 <div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var codigo = $("#emp").val();
+        $("#cod").val(codigo);
+    });
+
+</script>
 </body>
 
 </html>
