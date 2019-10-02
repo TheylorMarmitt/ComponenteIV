@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
-<head data-th-replace="fragments/imports :: head" >
+<head th:data-th-replace="@{fragments/imports :: head}" >
 
 </head>
 
@@ -10,12 +10,12 @@
 <div class="wrapper ">
 
     <!--    menu lateral-->
-    <div data-th-replace="fragments/fragmento_menu-lateral :: menu-lateral"></div>
+    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>
 
     <div class="main-panel">
 
         <!-- Navbar -->
-        <nav data-th-replace="fragments/fragmento_navegacao :: navegacao"> </nav>
+        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
         <!-- End Navbar -->
         <!-- <div class="panel-header panel-header-lg">
 
@@ -32,31 +32,35 @@
                         <div class="card-header">
                             <h5 class="title">Emprestar</h5>
                         </div>
-                        <form action="/emprestimo/cadastroEnviar" method="post">
+                        <form th:action="@{/emprestimo/cadastroEnviar}" method="post" th:object="${emprestimo}">
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Código cliente:</label>
-                                    <input type="number" name="pessoa.codigo" class="form-control">
+                                    <input type="number" th:field="*{pessoa}" name="pessoa.codigo" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}"></label>
                                 </div>
                             </div>
-                            <div class="container-fluid">
-                                <div class="form-group">
+                            <div class="container-fluid" th:object="${lista}">
+                                <div class="form-group" >
                                     <label>Exemplar:</label>
-                                    <select class="form-control" name="exemplar" id="exemplar">
-                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal} " ></option>
+                                    <select class="form-control" name="exemplar" id="exemplar" th:object="${exemplar}">
+                                        <option th:each="objeto : ${lista}" th:value="${objeto.codigo}" th:text=" 'Título: '+ ${objeto.titulo} +' - Quantidade: '+ ${objeto.quantidadeTotal}" th:selected="${objeto.codigo == exemplar.codigo}" ></option>
                                     </select>
+
                                 </div>
                             </div>
-                            <div class="container-fluid">
+                            <div class="container-fluid" th:object="${emprestimo}">
                                 <div class="form-group">
                                     <label>Data:</label>
-                                    <input type="date" name="data" class="form-control">
+                                    <input type="date" th:field="*{data}" name="data" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Quantidade:</label>
-                                    <input type="number" name="quantidade" class="form-control">
+                                    <input type="number" th:field="*{quantidade}" name="quantidade" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}"></label>
                                 </div>
                             </div>
 <!--                            <div class="container-fluid">-->
@@ -77,13 +81,13 @@
         </div>
 
         <!--      rodape-->
-        <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
+        <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
 
     </div>
 </div>
 
 
-<div data-th-replace="fragments/imports :: scripts" ></div>
+<div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
-<head data-th-replace="fragments/imports :: head" >
+<head th:data-th-replace="@{fragments/imports :: head}" >
 
 </head>
 
@@ -10,12 +10,12 @@
 <div class="wrapper ">
 
     <!--    menu lateral-->
-    <div data-th-replace="fragments/fragmento_menu-lateral :: menu-lateral"></div>
+    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>
 
     <div class="main-panel">
 
         <!-- Navbar -->
-        <nav data-th-replace="fragments/fragmento_navegacao :: navegacao"> </nav>
+        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
         <!-- End Navbar -->
         <!-- <div class="panel-header panel-header-lg">
 
@@ -32,41 +32,47 @@
                         <div class="card-header">
                             <h5 class="title">Cadastro de exemplar</h5>
                         </div>
-                        <form action="/exemplar/enviar", method="post">
+                        <form th:action="@{/exemplar/enviar}" method="post" th:object="${exemplar}">
                             <div class="container-fluid">
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label>Título:</label>
-                                    <input type="text" name="titulo" class="form-control">
+                                    <input type="text"  th:field="*{titulo}" class="form-control" >
+                                    <label class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Autor:</label>
-                                    <input type="text" name="autor" class="form-control">
+                                    <input type="text" th:field="*{autor}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Gênero:</label>
-                                    <input type="text" name="genero" class="form-control">
+                                    <input type="text" th:field="*{genero}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Editora:</label>
-                                    <input type="text" name="editora" class="form-control">
+                                    <input type="text" th:field="*{editora}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('editora')}" th:errors="*{editora}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Ano:</label>
-                                    <input type="number" name="anoPublicacao" class="form-control">
+                                    <input type="number" th:field="*{anoPublicacao}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('anoPublicacao')}" th:errors="*{anoPublicacao}"></label>
                                 </div>
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Quantidade de exemplares:</label>
-                                    <input type="number" name="quantidadeTotal" class="form-control">
+                                    <input type="number" th:field="*{quantidadeTotal}" class="form-control">
+                                    <label class="text-danger" th:if="${#fields.hasErrors('quantidadeTotal')}" th:errors="*{quantidadeTotal}"></label>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-2">
@@ -82,13 +88,13 @@
         </div>
 
         <!--      rodape-->
-        <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
+        <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
 
     </div>
 </div>
 
 
-<div data-th-replace="fragments/imports :: scripts" ></div>
+<div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
 </body>
 
 </html>

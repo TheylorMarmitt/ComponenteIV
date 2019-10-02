@@ -3,6 +3,8 @@ package br.edu.unoesc.crud.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -10,26 +12,32 @@ import java.util.Date;
 @Table(name = "Emprestimo")
 public class Emprestimo implements EntidadePersistente {
 
+	private static final long serialVersionUID = -7591166680980967161L;
+
+	@NotNull(message = "Informe o Emprestimo")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @NotNull
+    @NotNull(message = "Data inválida")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
 
-    @NotNull
+    @NotNull(message = "Pessoa obrigatória")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa = new Pessoa();
 
-    @NotNull
+    @NotNull(message = "Exemplar obrigatório")
     @ManyToOne
     @JoinColumn(name = "exemplar_id")
     private Exemplar exemplar = new Exemplar();
 
     @NotNull
     private Boolean ativo;
+
+    @NotNull(message = "Quantidade obrigatória")
+    @Min(value = 1, message = "Quantidade inválida")
     private Integer quantidade;
 
 

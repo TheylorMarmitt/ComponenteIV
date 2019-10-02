@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
-<head data-th-replace="fragments/imports :: head" >
+<head th:data-th-replace="@{fragments/imports :: head}" >
 
 </head>
 
@@ -10,12 +10,12 @@
 <div class="wrapper ">
 
     <!--    menu lateral-->
-    <div data-th-replace="fragments/fragmento_menu-lateral :: menu-lateral"></div>
+    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>
 
     <div class="main-panel">
 
         <!-- Navbar -->
-        <nav data-th-replace="fragments/fragmento_navegacao :: navegacao"> </nav>
+        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
         <!-- End Navbar -->
         <!-- <div class="panel-header panel-header-lg">
 
@@ -33,7 +33,7 @@
                             <h5 class="title">Lista exemplares disponíveis</h5>
                         </div>
 
-                        <form action="/buscaExemplarTitulo">
+                        <form th:action="@{/buscaExemplarTitulo}">
                             <div class="container">
                                 <div class="form-group">
                                     <label>Busca por título:</label>
@@ -66,7 +66,7 @@
                                     <td th:text="${exemplar.quantidadeTotal}"></td>
                                     <td th:text="${exemplar.genero}"></td>
                                     <td>
-                                        <a class="btn btn-outline-success" href="/emprestimo/cadastro" > <i class="fa fa-share-square"></i></a>
+                                        <a class="btn btn-outline-success" th:href="@{../emprestimo/cadastro/{codigo}(codigo=${exemplar.codigo})}"> <i class="fa fa-share-square"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -80,13 +80,13 @@
         </div>
 
         <!--      rodape-->
-        <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
+        <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
 
     </div>
 </div>
 
 
-<div data-th-replace="fragments/imports :: scripts" ></div>
+<div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
 </body>
 
 </html>

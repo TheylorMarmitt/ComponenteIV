@@ -1,65 +1,69 @@
 package br.edu.unoesc.crud.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import br.edu.unoesc.crud.reflection.CampoTela;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "Pessoa")
-public class Pessoa implements EntidadePersistente {
 
+public class Pessoa implements EntidadePersistente {
+	
 	private static final long serialVersionUID = 4728636547633461131L;
 
-	@Id
-	@CampoTela
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
 
-	@NotNull
-	@CampoTela
-	private String nome;
-	@NotNull
-	@CampoTela
-	private String sobrenome;
+    @NotNull
+    @NotEmpty(message = "Nome obrigatório")
+    @Size(min = 1, max = 150, message = "Nome inválido")
+    private String nome;
 
-	@NotNull
-	@CampoTela
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataNascimento;
+    @NotEmpty(message = "Sobrenome obrigatório")
+    @Size(min = 1, max = 150, message = "Sobrenome inválido")
+    private String sobrenome;
+    
+    @NotNull(message = "Data obrigatória")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dataNascimento;
 
-	@NotNull
-	@CampoTela
-	private String email;
+    @NotNull
+    @Email( message = "E-mail inválido")
+    @Size(min = 1, message = "E-mail inválido")
+    private String email;
 
-	@NotNull(message = "CPF obrigatório")
-	@Size(min = 11, max = 11, message = "CPF inválido")
-	private String cpf;
+    @NotNull
+    @NotEmpty(message = "CPF obrigatório")
+    @CPF(message = "CPF inválido")
+    private String cpf;
 
-	public Pessoa(Long codigo) {
+    public Pessoa(Long codigo) {
+    	
+    }
+    
+    public Long getCodigo() {
+        return codigo;
+    }
 
-	}
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
 
-	public Long getCodigo() {
-		return codigo;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
 	public String getSobrenome() {
 		return sobrenome;

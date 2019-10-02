@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
-<head data-th-replace="fragments/imports :: head" >
+<head th:data-th-replace="@{fragments/imports :: head}" >
 
 </head>
 
@@ -10,12 +10,12 @@
 <div class="wrapper ">
 
     <!--    menu lateral-->
-    <div data-th-replace="fragments/fragmento_menu-lateral :: menu-lateral"></div>
+    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>
 
     <div class="main-panel">
 
         <!-- Navbar -->
-        <nav data-th-replace="fragments/fragmento_navegacao :: navegacao"> </nav>
+        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
         <!-- End Navbar -->
         <!-- <div class="panel-header panel-header-lg">
 
@@ -33,7 +33,7 @@
                             <h5 class="title">Lista emprestados</h5>
                         </div>
 
-                        <form action="/buscaTitulo" method="get">
+                        <form th:action="@{/buscaTitulo}" method="get">
                             <div class="container">
                                 <div class="form-group">
                                     <label>Busca por título:</label>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form action="/buscaCliente" method="get" >
+                        <form th:action="@{/buscaCliente}" method="get" >
                             <div class="container">
                                 <div class="form-group">
                                     <label>Busca por cliente:</label>
@@ -63,6 +63,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Código</th>
                                         <th scope="col">Título</th>
                                         <th scope="col">Autor</th>
                                         <th scope="col">Quantidade</th>
@@ -73,13 +74,14 @@
                                 </thead>
                                 <tbody>
                                      <tr th:each="emprestimo : ${lista}">
+                                         <td th:text="${emprestimo.codigo}"></td>
                                         <td th:text="${emprestimo.exemplar.titulo}"></td>
                                         <td th:text="${emprestimo.exemplar.autor}"></td>
                                         <td th:text="${emprestimo.quantidade}"></td>
                                         <td th:text="${emprestimo.exemplar.editora}"></td>
                                         <td th:text="${emprestimo.pessoa.nome}"></td>
                                          <td>
-                                             <a class="btn btn-outline-success" href="/devolucao/devolucao" > <i class="fa fa-share-square"></i></a>
+                                             <a class="btn btn-outline-success" th:href="@{../devolucao/devolucao/{codigo}(codigo=${emprestimo.codigo})}" > <i class="fa fa-share-square"></i></a>
                                          </td>
                                     </tr>
                                 </tbody>
@@ -92,13 +94,13 @@
         </div>
 
         <!--      rodape-->
-        <footer data-th-replace="fragments/fragmento_rodape :: rodape" ></footer>
+        <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
 
     </div>
 </div>
 
 
-<div data-th-replace="fragments/imports :: scripts" ></div>
+<div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
 </body>
 
 </html>

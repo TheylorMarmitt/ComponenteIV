@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.model.Pessoa;
@@ -80,14 +81,14 @@ class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, EmprestimoRe
 		return quantidade;
 	}
 
-	private Emprestimo ajusteQtd(Emprestimo dado) throws Exception {
+	private Emprestimo ajusteQtd(Emprestimo dado) {
 
 		if (dado.getExemplar().getQuantidadeTotal() >= dado.getQuantidade()) {
 			dado.getExemplar().removerQuantidade(dado.getQuantidade());
 			dado.setAtivo(true);
 
 		} else {
-			throw new Exception("Exemplar não pode ser nulo");
+			throw new BestBooksException("Exemplar não pode ser nulo");
 		}
 		this.exemplarRepository.saveAndFlush(dado.getExemplar());
 		return dado;

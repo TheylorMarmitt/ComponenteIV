@@ -1,5 +1,6 @@
 package br.edu.unoesc.crud.service;
 
+import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Devolucao;
 import br.edu.unoesc.crud.repositories.DevolucaoRepository;
 import br.edu.unoesc.crud.repositories.EmprestimoRepository;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class DevolucaoServiceImpl extends AbstractCrudService<Devolucao,DevolucaoRepository>implements DevolucaoService {
@@ -44,7 +44,7 @@ public class DevolucaoServiceImpl extends AbstractCrudService<Devolucao,Devoluca
 
 	
 
-	private Devolucao ajustes(Devolucao d) throws Exception {
+	private Devolucao ajustes(Devolucao d) {
 		if (d.getQuantidade() <= d.getEmprestimo().getQuantidade()) {
 			d.getEmprestimo().setQuantidade(d.getEmprestimo().getQuantidade() - d.getQuantidade());
 
@@ -54,7 +54,7 @@ public class DevolucaoServiceImpl extends AbstractCrudService<Devolucao,Devoluca
 			d.getEmprestimo().getExemplar().addQuantidade(d.getQuantidade());
 
 		} else {
-			throw new Exception("Quantidade de devolução maior que emprestados");
+			throw new BestBooksException("Quantidade de devolução maior que emprestados");
 		}
 		this.emprestimoRepository.saveAndFlush(d.getEmprestimo());
 		this.exemplarRepository.saveAndFlush(d.getEmprestimo().getExemplar());
