@@ -1,12 +1,10 @@
 package br.edu.unoesc.crud.controller;
 
 import br.edu.unoesc.crud.exception.BestBooksException;
-import br.edu.unoesc.crud.model.Devolucao;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.service.EmprestimoService;
 import br.edu.unoesc.crud.service.ExemplarService;
-import br.edu.unoesc.crud.service.ExemplarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,11 +32,7 @@ public class EmprestimoController {
         if (codigo != null) {
             model.addAttribute("exemplar", exemplarService.getByCodigo(codigo));
         }
-        return "devolucao/devolucao";
-    }
 
-    @GetMapping("/emprestimo/cadastro")
-    public String cadastro(Model model) {
         model.addAttribute("lista", service.listar());
         return "emprestimo/cadastro";
     }
