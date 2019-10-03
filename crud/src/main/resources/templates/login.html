@@ -63,32 +63,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 </div>
                             </div>
                             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                            <input type="submit" >
+                            <input type="submit" class="form-control" >
                         </form>
                     </div>
 
                 </div>
             </div>
-            <!--banner-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card ">
-                        <div class="card-header ">
-                            <h5 class="card-title">Exemplares por título</h5>
-                            <p class="card-category">Quantidade de exemplares</p>
-                        </div>
-                        <div class="card-body ">
-                            <canvas id=grafico width="400" height="180"></canvas>
-                        </div>
-                        <div class="card-footer ">
-                            <hr>
-                            <!--                -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
 
             <!--      rodape-->
             <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
