@@ -33,7 +33,7 @@ public class DevolucaoController {
 
         if (codigo != null) {
 
-            model.addAttribute("emprestimoObj", emprestimoService);
+            model.addAttribute("emprestimoObj", emprestimoService.getByCodigo(codigo));
         }
         return "devolucao/devolucao";
     }

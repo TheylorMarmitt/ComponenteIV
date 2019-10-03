@@ -33,7 +33,7 @@ public class EmprestimoController {
             model.addAttribute("exemplar", exemplarService.getByCodigo(codigo));
         }
 
-        model.addAttribute("lista", service.listar());
+        model.addAttribute("lista", exemplarService.listar());
         return "emprestimo/cadastro";
     }
 
@@ -44,7 +44,7 @@ public class EmprestimoController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("emprestimo", emprestimo);
             model.addAttribute("exemplar", emprestimo.getExemplar());
-            model.addAttribute("lista", service.listar());
+            model.addAttribute("lista", exemplarService.listar());
             return "emprestimo/cadastro";
         }
         try {

@@ -6429,4 +6429,13 @@ License - nucleoapp.com/license/
 
 }
 
+.login{
+  background-color: #f4f3ef;
+  height: 100%;
+}
+
+.cor-botao-login{
+  background-color: #008a8c;
+  color: #f5f8ff;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

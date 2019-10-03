@@ -29,25 +29,16 @@ The above copyright notice and this permission notice shall be included in all c
     <!--    menu lateral-->
 <!--    <div th:data-th-replace="@{fragments/fragmento_menu-lateral :: menu-lateral}"></div>-->
 
-    <div class="main-panel">
+    <div class="login pt-5 pb-5">
 
-        <!-- Navbar -->
-        <nav th:data-th-replace="@{fragments/fragmento_navegacao :: navegacao}"> </nav>
-        <!-- End Navbar -->
-        <!-- <div class="panel-header panel-header-lg">
-
-    <canvas id="bigDashboardChart"></canvas>
-
-
-  </div> -->
         <div class="content">
 
             <!--        cards-->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 offset-md-2 pt-5 pb-5">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="title">Login</h5>
+                            <h3 class="title text-center">Login</h3>
                         </div>
                         <form action="/do_login" method="post">
                             <div class="container-fluid">
@@ -63,19 +54,22 @@ The above copyright notice and this permission notice shall be included in all c
                                 </div>
                             </div>
                             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                            <input type="submit" class="form-control" >
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" class="form-control cor-botao-login" >
+                                </div>
+                            </div>
+
                         </form>
                     </div>
 
                 </div>
             </div>
-
-            <!--      rodape-->
-            <footer th:data-th-replace="@{fragments/fragmento_rodape :: rodape}" ></footer>
-
         </div>
     </div>
+    </div>
 
+</div>
 
     <div th:data-th-replace="@{fragments/imports :: scripts}" ></div>
 
