@@ -4,7 +4,9 @@ import br.edu.unoesc.crud.exception.BestBooksException;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.service.EmprestimoService;
+import br.edu.unoesc.crud.service.EmprestimoServiceImpl;
 import br.edu.unoesc.crud.service.ExemplarService;
+import br.edu.unoesc.crud.service.ExemplarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +21,10 @@ import javax.validation.Valid;
 public class EmprestimoController {
 
     @Autowired
-    private EmprestimoService service;
+    private EmprestimoServiceImpl service;
 
     @Autowired
-    private ExemplarService exemplarService;
+    private ExemplarServiceImpl exemplarService;
 
 
     @GetMapping({ "/emprestimo/cadastro", "/emprestimo/cadastro/{codigo}" })

@@ -5,6 +5,7 @@ import br.edu.unoesc.crud.model.Devolucao;
 import br.edu.unoesc.crud.service.DevolucaoServiceImpl;
 import br.edu.unoesc.crud.model.Emprestimo;
 import br.edu.unoesc.crud.service.EmprestimoService;
+import br.edu.unoesc.crud.service.EmprestimoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class DevolucaoController {
 	private DevolucaoServiceImpl devolucaoService;
 
     @Autowired
-    private EmprestimoService emprestimoService;
+    private EmprestimoServiceImpl emprestimoService;
 
 
     @GetMapping({ "/devolucao/devolucao", "/devolucao/devolucao/{codigo}" })

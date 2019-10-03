@@ -3,6 +3,7 @@ package br.edu.unoesc.crud.controller;
 import br.edu.unoesc.crud.model.Exemplar;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
 import br.edu.unoesc.crud.service.EmprestimoService;
+import br.edu.unoesc.crud.service.EmprestimoServiceImpl;
 import br.edu.unoesc.crud.service.ExemplarServiceImpl;
 import br.edu.unoesc.crud.service.PessoaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class IndexController {
 	private PessoaServiceImpl pessoaService;
 
 	@Autowired
-	private EmprestimoService emprestimoService;
+	private EmprestimoServiceImpl emprestimoService;
 
 	@GetMapping("/")
 	public String dashboard(Model model) {

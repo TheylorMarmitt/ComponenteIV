@@ -14,7 +14,7 @@ import br.edu.unoesc.crud.repositories.EmprestimoRepository;
 import br.edu.unoesc.crud.repositories.ExemplarRepository;
 
 @Service
-class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, EmprestimoRepository> implements EmprestimoService {
+public class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, EmprestimoRepository> implements EmprestimoService {
 
 	public EmprestimoServiceImpl(EmprestimoRepository repository) {
 		super(repository);
