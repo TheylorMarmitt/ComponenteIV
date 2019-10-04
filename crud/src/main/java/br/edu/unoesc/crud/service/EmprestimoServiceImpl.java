@@ -38,7 +38,6 @@ public class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, Empre
 
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Emprestimo> listar() {
 		List<Emprestimo> lista = this.repository.findAllByAtivoTrue();
 
@@ -46,7 +45,6 @@ public class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, Empre
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Emprestimo> listarTitulo(String titulo) {
 		List<Emprestimo> lista = this.repository.findByExemplarTituloAndAtivoTrue(titulo);
 
@@ -54,7 +52,6 @@ public class EmprestimoServiceImpl extends AbstractCrudService<Emprestimo, Empre
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Emprestimo> listarCliente(String nome) {
 		List<Emprestimo> lista = this.repository.findByPessoaNomeAndAtivoTrue(nome);
 
