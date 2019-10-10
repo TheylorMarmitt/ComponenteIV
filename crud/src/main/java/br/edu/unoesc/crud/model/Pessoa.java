@@ -38,6 +38,7 @@ public class Pessoa implements EntidadePersistente {
     @NotNull
     @Email( message = "E-mail inválido")
     @Size(min = 1, message = "E-mail inválido")
+    @Column(unique = true)
     private String email;
 
     @NotNull
