@@ -13,24 +13,28 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-@Table(name="REGRA")
+@Table(name = "REGRA")
 public class Permissao implements GrantedAuthority {
 
 	private static final long serialVersionUID = -5638167253967450925L;
-	
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Long codigo;
-	
+
 	@Enumerated(EnumType.STRING)
-	private Regra regra =  USER;
-	
+	private Regra regra = USER;
+
 	@Override
 	public String getAuthority() {
 		return this.regra.getRegra();
 	}
 
+	public Permissao(Regra regra) {
+		this.regra = regra;
+	}
 
-	
-	
+	public Permissao() {
+	}
+
 }

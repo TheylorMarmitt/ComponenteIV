@@ -6,4 +6,8 @@ public interface UsuarioService extends GenericService<Usuario> {
 	
 	Usuario getUsuarioPorEmail(String email);
 	
+	void novoAdmin(Usuario usuario);
+	
+	void novoUsuario(Usuario usuario);
+	
 }
