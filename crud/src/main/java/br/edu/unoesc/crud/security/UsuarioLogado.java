@@ -1,4 +1,4 @@
-package br.edu.unoesc.crud.model;
+package br.edu.unoesc.crud.security;
 
 import java.util.Collection;
 

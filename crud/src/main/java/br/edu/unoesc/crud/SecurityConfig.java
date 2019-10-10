@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
-import br.edu.unoesc.crud.service.UsuarioBancoService;
+import br.edu.unoesc.crud.security.UsuarioBancoService;
 
 // nessa classe com @bean -> mapeado pelo spring
 // WebSecurityConfigurerAdapter -> da os met. de configuracao
@@ -32,10 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
+		http.authorizeRequests().antMatchers("/pessoa/lista").hasRole("ADMIN")
+				.antMatchers("/pessoa/cadastro/**").hasRole("ADMIN")
+				.antMatchers("/pessoa/excluir").hasRole("ADMIN")
 				.antMatchers("/css/**", "/demo/**", "/js/**", "/img/**", "/scss/**", "/fonts/**").permitAll()
-				.antMatchers("/**").hasRole("USER")
-				.antMatchers("/**").hasRole("ADMIN")
+				.antMatchers("/**").permitAll()
 				.and().formLogin().loginPage("/login").permitAll().loginProcessingUrl("/do_login");
 
 	}

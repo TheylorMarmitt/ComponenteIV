@@ -20,9 +20,9 @@ class UsuarioServiceImpl extends AbstractCrudService<Usuario, UsuarioRepository>
     }
 
 	@Override
-	public Usuario getUsuarioPorEmail(String email) {
-	        return repository.findByEmail(email);
-	    }
+	public Usuario findByPessoaEmail(String email) {
+		return repository.findUsuarioByPessoaEmail(email);
+	}
 
 	@Override
 	public void novoAdmin(Usuario usuario) {

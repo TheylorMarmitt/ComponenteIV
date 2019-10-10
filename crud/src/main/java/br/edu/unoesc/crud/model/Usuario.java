@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario extends Pessoa implements EntidadePersistente {
+//@Inheritance(strategy = InheritanceType.JOINED)
+public class Usuario implements EntidadePersistente {
 
 	private static final long serialVersionUID = 6217356586088299344L;
 
@@ -18,14 +19,13 @@ public class Usuario extends Pessoa implements EntidadePersistente {
 
 	private String senha;
 
+	@ManyToOne
+	@JoinColumn(name = "pessoa_id")
+	private Pessoa pessoa;
+
 	@Override
 	public Long getCodigo() {
 		return codigo;
-	}
-
-	@Override
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
 	}
 	
 	@OneToMany
@@ -48,4 +48,11 @@ public class Usuario extends Pessoa implements EntidadePersistente {
 		this.senha = senha;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 }

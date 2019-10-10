@@ -1,5 +1,6 @@
-package br.edu.unoesc.crud.service;
+package br.edu.unoesc.crud.security;
 
+import br.edu.unoesc.crud.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.crud.model.Usuario;
-import br.edu.unoesc.crud.model.UsuarioLogado;
 
 @Service
 public class UsuarioBancoService implements UserDetailsService {
@@ -19,9 +19,9 @@ public class UsuarioBancoService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = service.getUsuarioPorEmail(username);
-		
-		return new UsuarioLogado(usuario.getEmail(), usuario.getSenha(), usuario.getPermissoes());
+		Usuario usuario = service.findByPessoaEmail(username);
+		if(usuario == null) return null;
+		return new UsuarioLogado(usuario.getPessoa().getEmail(), usuario.getSenha(), usuario.getPermissoes());
 	}
 
 }

@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements EntidadePersistente {
 	
 	private static final long serialVersionUID = 4728636547633461131L;

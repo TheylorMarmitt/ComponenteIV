@@ -3,8 +3,8 @@ package br.edu.unoesc.crud.service;
 import br.edu.unoesc.crud.model.Usuario;
 
 public interface UsuarioService extends GenericService<Usuario> {
-	
-	Usuario getUsuarioPorEmail(String email);
+
+	Usuario findByPessoaEmail(String email);
 	
 	void novoAdmin(Usuario usuario);
 	

@@ -25,7 +25,7 @@ public class Emprestimo implements EntidadePersistente {
 
     @NotNull(message = "Pessoa obrigatória")
     @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa = new Pessoa();
 
     @NotNull(message = "Exemplar obrigatório")
