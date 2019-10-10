@@ -22,10 +22,13 @@ public class PessoaServiceImpl extends AbstractCrudService<Pessoa, PessoaReposit
 	@Override
 	public Pessoa salvaOuAltera(Pessoa dado) {
 
-		repository.save(dado);
+		repository.saveAndFlush(dado);
 		return dado;
 	}
 
+	public Pessoa findByEmail(String email){
+		return repository.findByEmail(email);
+	}
 
 	public Integer quantidade() {
 		return this.repository.findAll().size();

@@ -32,6 +32,7 @@ public class PessoaController {
 
 	@PostMapping("/pessoa/cadastro")
 	public String cadastro(Model model, @Valid Pessoa pessoa, BindingResult bindingResult) {
+		System.out.println(pessoa);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pessoa", pessoa);
 			return "pessoa/cadastro";
@@ -51,7 +52,6 @@ public class PessoaController {
 	@PostMapping("/pessoa/excluir")
 	public Pessoa excluir(Pessoa pessoa) {
 		Pessoa pessoaExcluida = service.excluir(pessoa.getCodigo());
-		
 		return pessoaExcluida;
 	}
 

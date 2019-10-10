@@ -34,7 +34,7 @@
                             <h5 class="title">Cadastro de pessoa</h5>
                         </div>
                         <form th:action="@{/pessoa/cadastro}" method="post" th:object="${pessoa}">
-
+                            <input hidden="hidden" name="codigo", th:value="${pessoa.codigo}">
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Nome:</label>
