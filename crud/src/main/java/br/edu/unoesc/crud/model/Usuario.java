@@ -4,18 +4,29 @@ package br.edu.unoesc.crud.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="USUARIO")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends Pessoa implements EntidadePersistente {
 
 	private static final long serialVersionUID = 6217356586088299344L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+
 	private String senha;
+
+	@Override
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	@Override
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
 	
 	@OneToMany
 	private List<Permissao> permissoes = new ArrayList<Permissao>();
