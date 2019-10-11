@@ -43,16 +43,16 @@ public class PessoaController {
 
 	@GetMapping("/pessoa/lista")
 	public String lista(Model model) {
-		List<Pessoa> pessoas = service.listar();
-		model.addAttribute("lista", pessoas);
+		model.addAttribute("lista", service.listar());
 		return "pessoa/lista";
 	}
 
 	@ResponseBody
 	@PostMapping("/pessoa/excluir")
-	public Pessoa excluir(Pessoa pessoa) {
-		Pessoa pessoaExcluida = service.excluir(pessoa.getCodigo());
-		return pessoaExcluida;
+	public String excluir(Pessoa pessoa, Model model) {
+		service.excluir(pessoa.getCodigo());
+		model.addAttribute("lista", service.listar());
+		return "pessoa/lista";
 	}
 
 }

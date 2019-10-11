@@ -13,6 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
         <button type="button" class="btn btn-danger" id="excluir">Excluir</button>
       </div>
     </div>
