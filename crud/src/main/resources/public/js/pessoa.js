@@ -17,12 +17,12 @@
 
 $('#excluir').on("click", function(e) {
 
-	var client = rest.chain(csrf, {
-		token: $("meta[name='_csrf']").attr("content"),
-		name: $("meta[name='_csrf_header']").attr("content")
+	$("body").bind("ajaxSend", function(elm, xhr){
+		xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
 	});
 
 	const codigo = e.target.value;
+
 
 	$.ajax({
 		// xhr.setRequestHeader(client),
@@ -32,6 +32,7 @@ $('#excluir').on("click", function(e) {
 		data: pessoa = {'codigo': codigo}
 
 	}).done(res => {
+		alert( "Data: " + res );
 
 	})
 
