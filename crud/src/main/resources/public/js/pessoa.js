@@ -1,7 +1,3 @@
-
-
-
-
 // $('#excluir').on("click", function(e) {
 //
 // 	const codigo = e.target.value;
@@ -17,23 +13,24 @@
 
 $('#excluir').on("click", function(e) {
 
-	$("body").bind("ajaxSend", function(elm, xhr){
-		xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
-	});
+	var token = ($("#token").val());
+	var header = ($("#header").val());
 
 	const codigo = e.target.value;
-
 
 	$.ajax({
 		// xhr.setRequestHeader(client),
 		type: "post",
 		url: 'excluir',
-		// headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
+		headers: {
+			"X-CSRF-TOKEN": $('meta[name="_csrf"]').attr('content')
+		},
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader(header, token);
+		},
 		data: pessoa = {'codigo': codigo}
 
 	}).done(res => {
-		alert( "Data: " + res );
-
+		location.reload();
 	})
-
 });

@@ -13,7 +13,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
+        <input type="hidden" name="${_csrf}" id="token"  th:value="${_csrf.token}"/>
+          <input type="hidden" name="${_csrf_header}" id="header"  th:value="${_csrf.headerName}"/>
         <button type="button" class="btn btn-danger" id="excluir">Excluir</button>
       </div>
     </div>

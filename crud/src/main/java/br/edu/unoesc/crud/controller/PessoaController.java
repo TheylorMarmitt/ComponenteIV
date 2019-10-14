@@ -47,11 +47,16 @@ public class PessoaController {
 		return "pessoa/lista";
 	}
 
-	@ResponseBody
 	@PostMapping("/pessoa/excluir")
 	public String excluir(Pessoa pessoa, Model model) {
 		service.excluir(pessoa.getCodigo());
 		model.addAttribute("lista", service.listar());
+		return "redirect:/";
+	}
+
+	@GetMapping("/buscaPessoa")
+	public String buscaPessoa(String nome, Model model){
+		model.addAttribute("lista", service.findByNome(nome));
 		return "pessoa/lista";
 	}
 

@@ -8,11 +8,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements EntidadePersistente {
 	
 	private static final long serialVersionUID = 4728636547633461131L;
@@ -36,13 +34,14 @@ public class Pessoa implements EntidadePersistente {
 
     @NotNull
     @Email( message = "E-mail inválido")
-    @Size(min = 1, message = "E-mail inválido")
+    @Size(min = 1, message = "E-mail inválido, tamanho deve ser maior que 1")
     @Column(unique = true)
     private String email;
 
     @NotNull
     @NotEmpty(message = "CPF obrigatório")
     @CPF(message = "CPF inválido")
+    @Column(unique = true)
     private String cpf;
 
     public Pessoa(Long codigo) {

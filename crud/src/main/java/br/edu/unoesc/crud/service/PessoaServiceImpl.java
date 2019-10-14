@@ -30,6 +30,10 @@ public class PessoaServiceImpl extends AbstractCrudService<Pessoa, PessoaReposit
 		return repository.findByEmail(email);
 	}
 
+	public List<Pessoa> findByNome(String nome){
+		return repository.findByNome(nome);
+	}
+
 	public Integer quantidade() {
 		return this.repository.findAll().size();
 	}

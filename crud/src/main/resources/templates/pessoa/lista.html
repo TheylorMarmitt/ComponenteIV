@@ -2,8 +2,8 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head th:data-th-replace="@{fragments/imports :: head}" >
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <meta id="token" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="header" name="_csrf_header" th:content="${_csrf.headerName}"/>
 
 </head>
 
@@ -35,12 +35,12 @@
                             <h5 class="title">Lista de clientes</h5>
                         </div>
 
-                        <form th:action="@{buscaTitulo}" method="get">
+                        <form th:action="@{/buscaPessoa}" method="get">
                             <div class="container">
                                 <div class="form-group">
                                     <label>Busca por nome:</label>
                                     <div class="input-group-append">
-                                        <input type="text" class="form-control" placeholder="Nome do cliente" >
+                                        <input type="text" class="form-control" name="nome" placeholder="Nome do cliente" >
                                         <div class="input-group-append">
                                             <button class="btn btn-info m-0" type="submit" id="button-addon1"><i class="fa fa-search"></i></button>
                                         </div>
