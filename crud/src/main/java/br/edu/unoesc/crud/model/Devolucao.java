@@ -27,7 +27,6 @@ public class Devolucao implements EntidadePersistente {
     private Emprestimo emprestimo;
 
     @NotNull(message = "Quantidade obrigatória")
-    @Min(value = 1, message = "Quantidade inválida, deve ser maior que 0")
     private Integer quantidade;
 
     public Devolucao(@NotNull Date data, @NotNull Emprestimo emprestimo, @NotNull Integer quantidade) {

@@ -43,6 +43,7 @@ public class EmprestimoController {
     
     @PostMapping("/emprestimo/cadastroEnviar")
     public String enviar(Model model, @Valid Emprestimo emprestimo, BindingResult bindingResult) {
+        System.out.println(bindingResult.getAllErrors());
         if (bindingResult.hasErrors()) {
             model.addAttribute("emprestimo", emprestimo);
             model.addAttribute("exemplar", emprestimo.getExemplar());

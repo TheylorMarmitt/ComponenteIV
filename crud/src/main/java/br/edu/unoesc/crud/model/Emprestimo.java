@@ -14,7 +14,6 @@ public class Emprestimo implements EntidadePersistente {
 
 	private static final long serialVersionUID = -7591166680980967161L;
 
-	@NotNull(message = "Informe o Emprestimo")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
@@ -33,11 +32,9 @@ public class Emprestimo implements EntidadePersistente {
     @JoinColumn(name = "exemplar_id")
     private Exemplar exemplar = new Exemplar();
 
-    @NotNull
-    private Boolean ativo;
+    private boolean ativo;
 
     @NotNull(message = "Quantidade obrigatória")
-    @Min(value = 1, message = "Quantidade inválida")
     private Integer quantidade;
 
 
